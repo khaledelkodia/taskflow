@@ -56,13 +56,6 @@
         {{ $t('login.signIn') }}
       </UiButton>
     </form>
-    
-    <div class="mt-8 text-center border-t border-app-border pt-6">
-      <p class="text-xs text-content-muted">
-        {{ $t('login.demoCredentials') }}<br/>
-        <code class="bg-gray-100 px-1 py-0.5 rounded text-gray-800">admin@taskflow.io</code> / <code class="bg-gray-100 px-1 py-0.5 rounded text-gray-800">password</code>
-      </p>
-    </div>
   </div>
 </template>
 
