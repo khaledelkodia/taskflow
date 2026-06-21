@@ -1,0 +1,241 @@
+{
+  "nav": {
+    "dashboard": "لوحة القيادة",
+    "projects": "المشاريع",
+    "tasks": "المهام",
+    "clients": "العملاء",
+    "users": "المستخدمين",
+    "settings": "الإعدادات"
+  },
+  "dashboard": {
+    "title": "لوحة القيادة",
+    "welcome": "مرحباً بعودتك يا {name}! إليك آخر التطورات.",
+    "refresh": "تحديث",
+    "viewAllTasks": "عرض جميع المهام",
+    "stats": {
+      "totalActiveTasks": "إجمالي المهام النشطة",
+      "overdueTasks": "المهام المتأخرة",
+      "tasksInTesting": "مهام قيد الاختبار",
+      "completedTasks": "المهام المكتملة",
+      "activeProjects": "المشاريع النشطة",
+      "totalClients": "إجمالي العملاء"
+    }
+  },
+  "tasks": {
+    "title": "المهام",
+    "subtitle": "إدارة ومتابعة جميع مهام المشروع.",
+    "createTask": "إنشاء مهمة",
+    "filters": {
+      "search": "بحث",
+      "searchPlaceholder": "العنوان أو الوصف...",
+      "status": "الحالة",
+      "allStatuses": "جميع الحالات",
+      "priority": "الأولوية",
+      "allPriorities": "جميع الأولويات",
+      "type": "النوع",
+      "allTypes": "جميع الأنواع",
+      "clearFilters": "مسح الفلاتر"
+    },
+    "table": {
+      "id": "الرقم",
+      "title": "العنوان",
+      "project": "المشروع",
+      "status": "الحالة",
+      "priority": "الأولوية",
+      "assignee": "المسؤول",
+      "createdBy": "المُنشئ",
+      "created": "تاريخ الإنشاء"
+    },
+    "empty": {
+      "title": "لم يتم العثور على مهام",
+      "subtitle": "حاول تغيير الفلاتر أو إنشاء مهمة جديدة."
+    },
+    "pagination": "عرض {start} إلى {end} من أصل {total} نتيجة",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "taskForm": {
+    "createTitle": "إنشاء مهمة جديدة",
+    "editTitle": "تعديل المهمة",
+    "taskTitle": "عنوان المهمة",
+    "taskTitlePlaceholder": "مثال: إصلاح مشكلة انتهاء مهلة بوابة الدفع",
+    "client": "العميل",
+    "selectClient": "اختر عميلاً",
+    "project": "المشروع",
+    "noProject": "بدون مشروع",
+    "type": "النوع",
+    "priority": "الأولوية",
+    "status": "الحالة",
+    "statusNote": "يمكن تغيير الحالة من صفحة تفاصيل المهمة.",
+    "assignee": "المسؤول",
+    "unassigned": "غير محدد",
+    "estimatedHours": "الساعات المقدرة",
+    "estimatedHoursPlaceholder": "مثال: 8",
+    "dueDate": "تاريخ الاستحقاق",
+    "description": "الوصف",
+    "descriptionPlaceholder": "قدم معلومات تفصيلية عن المهمة...",
+    "saveChanges": "حفظ التغييرات"
+  },
+  "clientForm": {
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "ahmed{'@'}example.com",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "+966 50 123 4567",
+    "portalLink": "اسم الرابط المخصص للعميل (إنجليزي فقط)",
+    "portalLinkPlaceholder": "مثال: acme-company",
+    "notes": "ملاحظات",
+    "notesPlaceholder": "تفاصيل إضافية عن العميل...",
+    "saveFailed": "فشل في حفظ بيانات العميل"
+  },
+  "projects": {
+    "title": "المشاريع",
+    "subtitle": "تتبع وإدارة جميع المشاريع عبر عملائك.",
+    "createProject": "إنشاء مشروع",
+    "filterByClient": "فلترة حسب العميل",
+    "allClients": "جميع العملاء",
+    "client": "العميل",
+    "created": "تاريخ الإنشاء",
+    "salesOwner": "السيلز المسؤول",
+    "noSalesOwner": "بدون سيلز",
+    "empty": {
+      "title": "لم يتم العثور على مشاريع",
+      "subtitle": "حاول تغيير الفلاتر أو إنشاء مشروع جديد."
+    },
+    "editProject": "تعديل المشروع",
+    "projectName": "اسم المشروع",
+    "projectNamePlaceholder": "مثال: إعادة تصميم الموقع",
+    "description": "الوصف",
+    "descriptionPlaceholder": "وصف مبسط للمشروع...",
+    "status": "الحالة",
+    "deleteProject": "حذف المشروع",
+    "confirmDelete": "هل أنت متأكد من حذف هذا المشروع؟ لا يمكن التراجع عن هذا الإجراء.",
+    "tasks": "مهام المشروع",
+    "saveFailed": "فشل حفظ المشروع",
+    "deleteFailed": "فشل حذف المشروع",
+    "statusActive": "نشط",
+    "statusOnHold": "قيد الانتظار",
+    "statusCompleted": "مكتمل",
+    "statusCancelled": "ملغى"
+  },
+  "clients": {
+    "title": "العملاء",
+    "subtitle": "إدارة جميع مؤسسات العملاء وحالتهم.",
+    "addClient": "إضافة عميل",
+    "searchPlaceholder": "البحث باسم الشركة أو جهة الاتصال أو البريد الإلكتروني...",
+    "table": {
+      "companyName": "اسم الشركة",
+      "contactPerson": "جهة الاتصال",
+      "contactInfo": "معلومات التواصل",
+      "status": "الحالة",
+      "created": "تاريخ الإنشاء",
+      "actions": "الإجراءات"
+    },
+    "empty": {
+      "title": "لا يوجد عملاء",
+      "subtitle": "ابدأ بإنشاء عميلك الأول."
+    },
+    "copyLink": "نسخ رابط العميل"
+  },
+  "login": {
+    "welcome": "مرحباً بك في TaskFlow",
+    "subtitle": "سجّل الدخول لإدارة مساحة عملك.",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "demoCredentials": "بيانات تجريبية:",
+    "failedSignIn": "فشل تسجيل الدخول. يرجى التحقق من بياناتك."
+  },
+  "common": {
+    "search": "بحث...",
+    "createNew": "إنشاء جديد",
+    "viewAll": "عرض الكل",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "edit": "تعديل",
+    "delete": "حذف"
+  },
+  "taskDetails": {
+    "notFound": {
+      "title": "المهمة غير موجودة",
+      "subtitle": "ربما تم حذف هذه المهمة أو ليس لديك صلاحية لرؤيتها.",
+      "backBtn": "العودة للمهام"
+    },
+    "createdBy": "بواسطة",
+    "on": "في",
+    "description": "الوصف",
+    "noDescription": "لا يوجد وصف لهذه المهمة.",
+    "details": "التفاصيل",
+    "assignee": "المسؤول",
+    "unassigned": "غير محدد",
+    "project": "المشروع",
+    "client": "العميل",
+    "estimate": "الوقت المقدر",
+    "logged": "الوقت المستغرق",
+    "dueDate": "تاريخ الاستحقاق",
+    "timeline": "التسلسل الزمني"
+  },
+  "portal": {
+    "title": "بوابة متابعة المهام",
+    "invalidLink": "رابط غير صالح",
+    "invalidLinkDesc": "هذا الرابط غير صالح أو انتهت صلاحيته. يرجى التواصل مع المسؤول للحصول على رابط جديد.",
+    "progressOverview": "نظرة عامة على التقدم",
+    "totalTasks": "إجمالي المهام",
+    "inProgress": "قيد التنفيذ",
+    "needsReview": "بانتظار المراجعة",
+    "completed": "مكتملة",
+    "overallCompletion": "نسبة الإنجاز الكلية",
+    "yourTasks": "المهام الخاصة بك",
+    "filterAll": "كل المهام",
+    "filterActive": "نشطة",
+    "filterReview": "بانتظار المراجعة",
+    "filterCompleted": "مكتملة",
+    "noTasks": "لا توجد مهام في هذا التصنيف.",
+    "expectedCompletion": "وقت الانتهاء المتوقع",
+    "notScheduled": "غير محدد",
+    "lastUpdate": "آخر تحديث",
+    "viewDetails": "عرض التفاصيل",
+    "discussion": "المناقشات",
+    "totalProjects": "المشاريع",
+    "projectsTitle": "مشاريعك",
+    "generalTasks": "مهام عامة",
+    "tasksOf": "تم إنجاز {done} من {total} مهمة",
+    "noProjects": "لا توجد مشاريع بعد.",
+    "yourName": "اسمك",
+    "yourNamePlaceholder": "اكتب اسمك",
+    "writeComment": "اكتب تعليقًا...",
+    "postComment": "إرسال",
+    "noComments": "لا توجد تعليقات بعد. ابدأ النقاش!",
+    "commentFailed": "تعذّر إرسال التعليق. حاول مرة أخرى."
+  },
+  "comments": {
+    "clientLabel": "العميل"
+  },
+  "users": {
+    "title": "إدارة المستخدمين",
+    "subtitle": "إدارة مستخدمي النظام والأدوار والصلاحيات.",
+    "table": {
+      "user": "المستخدم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "status": "الحالة",
+      "joined": "تاريخ الانضمام",
+      "actions": "الإجراءات"
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "actions": {
+      "activate": "تفعيل",
+      "deactivate": "تعطيل"
+    },
+    "newUser": "مستخدم جديد",
+    "form": {
+      "fullName": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "passwordHint": "8 أحرف على الأقل.",
+      "role": "الدور"
+    }
+  }
+}

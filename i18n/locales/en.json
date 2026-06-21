@@ -1,0 +1,241 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "clients": "Clients",
+    "users": "Users",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}! Here's what's happening.",
+    "refresh": "Refresh",
+    "viewAllTasks": "View All Tasks",
+    "stats": {
+      "totalActiveTasks": "Total Active Tasks",
+      "overdueTasks": "Overdue Tasks",
+      "tasksInTesting": "Tasks in Testing",
+      "completedTasks": "Completed Tasks",
+      "activeProjects": "Active Projects",
+      "totalClients": "Total Clients"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "subtitle": "Manage and track all project tasks.",
+    "createTask": "Create Task",
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Title or description...",
+      "status": "Status",
+      "allStatuses": "All Statuses",
+      "priority": "Priority",
+      "allPriorities": "All Priorities",
+      "type": "Type",
+      "allTypes": "All Types",
+      "clearFilters": "Clear Filters"
+    },
+    "table": {
+      "id": "ID",
+      "title": "Title",
+      "project": "Project",
+      "status": "Status",
+      "priority": "Priority",
+      "assignee": "Assignee",
+      "createdBy": "Created By",
+      "created": "Created"
+    },
+    "empty": {
+      "title": "No tasks found",
+      "subtitle": "Try adjusting your filters or create a new task."
+    },
+    "pagination": "Showing {start} to {end} of {total} results",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "taskForm": {
+    "createTitle": "Create Task",
+    "editTitle": "Edit Task",
+    "taskTitle": "Task Title",
+    "taskTitlePlaceholder": "e.g. Fix payment gateway timeout",
+    "client": "Client",
+    "selectClient": "Select a client",
+    "project": "Project",
+    "noProject": "No Project",
+    "type": "Type",
+    "priority": "Priority",
+    "status": "Status",
+    "statusNote": "Status can be changed from the task details page.",
+    "assignee": "Assignee",
+    "unassigned": "Unassigned",
+    "estimatedHours": "Estimated Hours",
+    "estimatedHoursPlaceholder": "e.g. 8",
+    "dueDate": "Due Date",
+    "description": "Description",
+    "descriptionPlaceholder": "Provide detailed information about the task...",
+    "saveChanges": "Save Changes"
+  },
+  "clientForm": {
+    "email": "Email",
+    "emailPlaceholder": "john{'@'}acme.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+1 234 567 8900",
+    "portalLink": "Custom Portal Link Name (English only)",
+    "portalLinkPlaceholder": "e.g. acme-company",
+    "notes": "Notes",
+    "notesPlaceholder": "Additional details about the client...",
+    "saveFailed": "Failed to save client"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Track and manage all projects across your clients.",
+    "createProject": "Create Project",
+    "filterByClient": "Filter by Client",
+    "allClients": "All Clients",
+    "client": "Client",
+    "created": "Created",
+    "salesOwner": "Sales (responsible)",
+    "noSalesOwner": "No sales assigned",
+    "empty": {
+      "title": "No projects found",
+      "subtitle": "Try adjusting your filters or create a new project."
+    },
+    "editProject": "Edit Project",
+    "projectName": "Project Name",
+    "projectNamePlaceholder": "e.g. Website Redesign",
+    "description": "Description",
+    "descriptionPlaceholder": "Brief description of the project...",
+    "status": "Status",
+    "deleteProject": "Delete Project",
+    "confirmDelete": "Are you sure you want to delete this project? This action cannot be undone.",
+    "tasks": "Project Tasks",
+    "saveFailed": "Failed to save project",
+    "deleteFailed": "Failed to delete project",
+    "statusActive": "Active",
+    "statusOnHold": "On Hold",
+    "statusCompleted": "Completed",
+    "statusCancelled": "Cancelled"
+  },
+  "clients": {
+    "title": "Clients",
+    "subtitle": "Manage all client organizations and their status.",
+    "addClient": "Add Client",
+    "searchPlaceholder": "Search by company name, contact person, or email...",
+    "table": {
+      "companyName": "Company Name",
+      "contactPerson": "Contact Person",
+      "contactInfo": "Contact Info",
+      "status": "Status",
+      "created": "Created",
+      "actions": "Actions"
+    },
+    "empty": {
+      "title": "No clients found",
+      "subtitle": "Get started by creating your first client."
+    },
+    "copyLink": "Copy Portal Link"
+  },
+  "login": {
+    "welcome": "Welcome to TaskFlow",
+    "subtitle": "Sign in to manage your workspace.",
+    "email": "Email address",
+    "password": "Password",
+    "signIn": "Sign in to workspace",
+    "demoCredentials": "Demo credentials:",
+    "failedSignIn": "Failed to sign in. Please check your credentials."
+  },
+  "common": {
+    "search": "Search...",
+    "createNew": "Create New",
+    "viewAll": "View All",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "taskDetails": {
+    "notFound": {
+      "title": "Task not found",
+      "subtitle": "This task might have been deleted or you don't have permission to view it.",
+      "backBtn": "Back to Tasks"
+    },
+    "createdBy": "Created by",
+    "on": "on",
+    "description": "Description",
+    "noDescription": "No description provided.",
+    "details": "Details",
+    "assignee": "Assignee",
+    "unassigned": "Unassigned",
+    "project": "Project",
+    "client": "Client",
+    "estimate": "Estimate",
+    "logged": "Logged",
+    "dueDate": "Due Date",
+    "timeline": "Timeline"
+  },
+  "portal": {
+    "title": "Client Portal",
+    "invalidLink": "Invalid Access Link",
+    "invalidLinkDesc": "This portal link is invalid or has expired. Please contact your project manager for a new link.",
+    "progressOverview": "Project Progress Overview",
+    "totalTasks": "Total Tasks",
+    "inProgress": "In Progress",
+    "needsReview": "Needs Review",
+    "completed": "Completed",
+    "overallCompletion": "Overall Completion",
+    "yourTasks": "Your Tasks",
+    "filterAll": "All Tasks",
+    "filterActive": "Active",
+    "filterReview": "Needs Review",
+    "filterCompleted": "Completed",
+    "noTasks": "No tasks found in this category.",
+    "expectedCompletion": "Expected Completion",
+    "notScheduled": "Not scheduled",
+    "lastUpdate": "Last Update",
+    "viewDetails": "View Details",
+    "discussion": "Discussion",
+    "totalProjects": "Projects",
+    "projectsTitle": "Your Projects",
+    "generalTasks": "General Tasks",
+    "tasksOf": "{done} of {total} tasks completed",
+    "noProjects": "No projects yet.",
+    "yourName": "Your name",
+    "yourNamePlaceholder": "Enter your name",
+    "writeComment": "Write a comment...",
+    "postComment": "Send",
+    "noComments": "No comments yet. Start the discussion!",
+    "commentFailed": "Could not send your comment. Please try again."
+  },
+  "comments": {
+    "clientLabel": "Client"
+  },
+  "users": {
+    "title": "User Management",
+    "subtitle": "Manage system users, roles, and access.",
+    "table": {
+      "user": "User",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "joined": "Joined",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "activate": "Activate",
+      "deactivate": "Deactivate"
+    },
+    "newUser": "New User",
+    "form": {
+      "fullName": "Full name",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least 8 characters.",
+      "role": "Role"
+    }
+  }
+}

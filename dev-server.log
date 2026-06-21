@@ -1,0 +1,224 @@
+
+> taskflow@1.0.0 dev
+> nuxt dev --host 127.0.0.1 --port 3000
+
+|
+•  [32mNuxt [1m3.21.7[22m[39m[90m (with [39m[90mNitro [1m2.13.4[22m[39m[90m, Vite [1m7.3.5[22m[39m[90m and Vue [1m3.5.35[22m[39m[90m)[39m
+
+[32m  ➜ Local:   [39m [36m[4mhttp://127.0.0.1:[1m3000[22m/[24m[39m
+[90m  ➜ Network:  use [37m--host[90m to expose[39m
+
+[90m[[90mnuxt:tailwindcss[90m][39m [36mi[39m Using default Tailwind CSS file
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v3.2.4)[22m
+
+[90m[[90mnuxt[90m][39m [36mi[39m Running with compatibility version [36m4[39m
+[32m√[39m Vite client built in 2160ms
+[32m√[39m Vite server built in 10273ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 776.67ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 1346.5ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1514.83ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.server.mjs[39m in 1047.78ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 1547.81ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 1808.31ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 23601ms
+[36mi[39m Vite server warmed up in 8ms
+[36mi[39m Vite client warmed up in 15ms
+[32m√[39m Vite server hmr 1 files in 19386.788ms
+[32m√[39m Vite server hmr 1 files in 0.015ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 2465.79ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.server.mjs[39m in 2468.92ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 2623.81ms
+[32m√[39m Vite server hmr 2 files in 0.006ms
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m[2m (x2)[22m
+[32m√[39m Vite server hmr 30 files in 90.022ms
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m[2m (x4)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x2)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x4)[22m
+[32m√[39m Vite server hmr 22 files in 102.532ms
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m
+[36mi[39m [32mpage reload [39m[2mutils/permissions.ts[22m[2m (x2)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x2)[22m
+[32m√[39m Vite server hmr 22 files in 427.822ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x4)[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x2)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x4)[22m
+[32m√[39m Vite server hmr 20 files in 57.934ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x5)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x6)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x7)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x8)[22m
+[32m√[39m Vite server hmr 11 files in 53.156ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x9)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x10)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x11)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x12)[22m
+[32m√[39m Vite server hmr 11 files in 42.341ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x13)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x14)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x15)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x16)[22m
+[32m√[39m Vite server hmr 11 files in 52.018ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x17)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x18)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x19)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x20)[22m
+[32m√[39m Vite server hmr 10 files in 62.407ms
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css[22m
+[36mi[39m [32m.env changed, restarting server...[39m
+[36mi[39m [32m.env changed, restarting server...[39m[2m (x2)[22m
+[36mi[39m server restarted.
+[36mi[39m server restarted.[2m (x2)[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 3809.7ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 4237.43ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 4948.57ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.server.mjs[39m in 587.15ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 596.3ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 608.06ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+
+[32m  ➜ Local:   [39m [36m[4mhttp://127.0.0.1:[1m3000[22m/[24m[39m
+[90m  ➜ Network:  use [37m--host[90m to expose[39m
+
+[90m[[90mnuxt:tailwindcss[90m][39m [36mi[39m Using default Tailwind CSS file
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v3.2.4)[22m
+
+[90m[[90mnuxt[90m][39m [36mi[39m Running with compatibility version [36m4[39m
+[32m√[39m Vite client built in 244ms
+[32m√[39m Vite server built in 5011ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 654.89ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 771.2ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1214.59ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 11774ms
+[36mi[39m Vite server warmed up in 4ms
+[36mi[39m Vite client warmed up in 8ms
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 699.12ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 2108.02ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 2312ms
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x2)[22m
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 2306ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 2197.26ms
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m[2m (x3)[22m
+[32m√[39m Vite server hmr 27 files in 15251.708ms
+.nuxt/dist directory has been removed. Restarting Nuxt...
+[90m[[90mnuxt:tailwindcss[90m][39m [36mi[39m Using default Tailwind CSS file
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v3.2.4)[22m
+
+[90m[[90mnuxt[90m][39m [36mi[39m Running with compatibility version [36m4[39m
+[32m√[39m Vite client built in 174ms
+[32m√[39m Vite server built in 2949ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 888.49ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 1234.36ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1649.16ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 18011ms
+[36mi[39m Vite server warmed up in 7ms
+[36mi[39m Vite client warmed up in 13ms
+[32m√[39m Vite server hmr 2 files in 7241.9ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 510.79ms
+[36mi[39m [32mpage reload [39m[2msupabase/migration_v2.sql.tmp.11976.ee3927836e73[22m
+
+[32m  ➜ Local:   [39m [36m[4mhttp://127.0.0.1:[1m3000[22m/[24m[39m
+[90m  ➜ Network:  use [37m--host[90m to expose[39m
+
+[90m[[90mnuxt:tailwindcss[90m][39m [36mi[39m Using default Tailwind CSS file
+[33m  ➜ DevTools: [39m[2mpress [22m[32mShift[39m[2m + [22m[32mAlt[39m[2m + [22m[32mD[39m[2m in the browser (v3.2.4)[22m
+
+[90m[[90mnuxt[90m][39m [36mi[39m Running with compatibility version [36m4[39m
+[32m√[39m Vite client built in 224ms
+[32m√[39m Vite server built in 3036ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 542.79ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 671.4ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1044.91ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 8024ms
+[36mi[39m Vite server warmed up in 4ms
+[36mi[39m Vite client warmed up in 10ms
+[32m√[39m Vite server hmr 1 files in 8340.781ms
+[32m√[39m Vite server hmr 2 files in 0.006ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 1989.08ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 2971.98ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 3897.21ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.server.mjs[39m in 1887.74ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 1896.96ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 1911.91ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 2323.16ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 3105.75ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 4707.4ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 1125.49ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 1211.71ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1426.8ms
+[32m√[39m Vite server hmr 14 files in 406.808ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mruntime.vue-devtools-client.8LE89VfS3shjDjCKRYAIcKphURMev0HVWSkelkRcBis.js[39m in 1642.56ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 1694.32ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 1955.48ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x2)[22m
+[32m√[39m Vite server hmr 12 files in 547.951ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.server.mjs[39m in 854.92ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mplugins.client.mjs[39m in 1429.46ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 1444.88ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x4)[22m
+[32m√[39m Vite server hmr 8 files in 306.901ms
+[36mi[39m [32mhmr update [39m[2m/pages/portal/[token].vue, /pages/portal/[token].vue?direct&vue&type=style&index=0&scoped=f3edd672&lang.css, /node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /node_modules/tailwindcss/tailwind.css?direct, /assets/css/main.css?direct, /pages/portal/[token].vue?macro=true, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/node_modules/tailwindcss/tailwind.css, /assets/css/main.css, /@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Froutes.mjs, /pages/portal/[token].vue?macro=true[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mrouter.options.mjs[39m in 565.16ms
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/supabase-database.d.ts[39m in 682.56ms
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x2)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x3)[22m
+[36mi[39m [32mpage reload [39m[2mvirtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fmiddleware.mjs[22m[2m (x4)[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m[2m (x2)[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css, /assets/css/main.css?direct[22m
+[36mi[39m [32mhmr update [39m[2m/assets/css/main.css[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x2)[22m
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 4340ms
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x3)[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x4)[22m
+[90m[[90mnuxt[90m][39m [36mi[39m Compiled [36mtypes/plugins.d.ts[39m in 690.17ms
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 3481ms
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x5)[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x6)[22m
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 2478ms
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x7)[22m
+[36mi[39m [32mhmr update [39m[2m/@id/virtual:nuxt:D%3A%2Ftask%20management%2Ftaskflow%2F.nuxt%2Fi18n-options.mjs[22m[2m (x8)[22m
+[90m[[90mnitro[90m][39m [32m√[39m Nuxt Nitro server built in 2600ms

@@ -1,0 +1,39 @@
+{
+  "name": "taskflow",
+  "version": "1.0.0",
+  "description": "TaskFlow — Enterprise SaaS Task Management Platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^10.4.0",
+    "@nuxtjs/supabase": "^1.4.5",
+    "@pinia/nuxt": "^0.9.0",
+    "@vueuse/core": "^13.1.0",
+    "@vueuse/nuxt": "^13.1.0",
+    "chart.js": "^4.4.7",
+    "date-fns": "^4.4.0",
+    "lucide-vue-next": "^1.0.0",
+    "nuxt": "^3.16.2",
+    "pinia": "^2.3.0",
+    "vue": "^3.5.14",
+    "vue-chartjs": "^5.3.2",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.13.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.10"
+  }
+}

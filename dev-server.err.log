@@ -1,0 +1,132 @@
+
+[43m[30m WARN [39m[49m [33mwarning: [33mDuplicate key "manage_permissions" in object literal[33m
+48 |    view_all_tasks:       ['super_admin', 'project_manager', 'sales'],
+49 |    delete_tasks:         ['super_admin'],
+50 |    manage_permissions:   ['super_admin']
+   |    ^
+51 |  }
+52 |  
+[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mD:/task management/taskflow/utils/permissions.ts[39m
+
+
+[43m[30m WARN [39m[49m [33mwarning: [33mDuplicate key "manage_permissions" in object literal[33m
+48 |    view_all_tasks:       ['super_admin', 'project_manager', 'sales'],
+49 |    delete_tasks:         ['super_admin'],
+50 |    manage_permissions:   ['super_admin']
+   |    ^
+51 |  }
+52 |  
+[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mD:/task management/taskflow/utils/permissions.ts[39m[2m (x2)[22m
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m[2m (x2)[22m
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m[2m (x3)[22m
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m[2m (x4)[22m
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m[2m (x5)[22m
+
+
+[41m[30m ERROR [39m[49m Pre-transform error: Failed to resolve import "#app-manifest" from "node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/task management/taskflow/node_modules/nuxt/dist/app/composables/manifest.js?v=f94c454c[39m:16:6
+[33m  14 |        /* webpackIgnore: true */
+  15 |        /* @vite-ignore */
+  16 |        "#app-manifest"
+     |        ^
+  17 |      );
+  18 |    } else {[39m[2m (x6)[22m
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[43m[30m WARN [39m[49m [intlify] Not found 'users.newUser' key in 'ar' locale messages.
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
+
+[43m[30m WARN [39m[49m [Vue Router warn]: No match found for location with path "/favicon.svg"
+
