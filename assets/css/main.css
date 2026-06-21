@@ -128,9 +128,11 @@
   .input:hover {
     @apply border-primary-300;
   }
-  .input:focus {
-    @apply outline-none border-primary-500 bg-white;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  .input:focus,
+  .input:focus-visible {
+    @apply outline-none bg-white;
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.18);
   }
   .input-error {
     @apply border-danger;

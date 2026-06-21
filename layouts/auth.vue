@@ -1,6 +1,8 @@
 <template>
   <div class="auth-layout">
-    <slot />
+    <div class="auth-content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -22,9 +24,18 @@
   left: -50%;
   width: 200%;
   height: 200%;
+  pointer-events: none;
   background: radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.15), transparent 50%),
               radial-gradient(circle at 70% 60%, rgba(124, 58, 237, 0.1), transparent 50%);
   animation: float 15s ease-in-out infinite;
+}
+.auth-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @keyframes float {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
