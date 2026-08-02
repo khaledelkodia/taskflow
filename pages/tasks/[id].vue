@@ -21,7 +21,7 @@
               {{ formatTaskNumber(task.task_number) }}
             </span>
             <UiBadge :color="PRIORITY_COLORS[task.priority].replace('badge-', '') as any">
-              {{ PRIORITY_LABELS[task.priority] }}
+              {{ $t('priority.' + task.priority) }}
             </UiBadge>
             <UiBadge :color="TASK_TYPE_COLORS[task.type].replace('badge-', '') as any">
               <span class="mr-1">{{ TASK_TYPE_ICONS[task.type] }}</span>

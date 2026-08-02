@@ -22,7 +22,7 @@
         :disabled="updating"
       >
         <span class="w-1.5 h-1.5 rounded-full" :class="TASK_STATUS_DOT[status as keyof typeof TASK_STATUS_DOT]" />
-        {{ TASK_STATUS_LABELS[status as keyof typeof TASK_STATUS_LABELS] }}
+        {{ t(`taskStatus.${status}`) }}
       </button>
     </div>
   </UiDropdown>
@@ -45,9 +45,10 @@ const emit = defineEmits<{
 
 const tasksStore = useTasksStore()
 const authStore = useAuthStore()
+const { t } = useI18n()
 const updating = ref(false)
 
-const currentLabel = computed(() => TASK_STATUS_LABELS[props.currentStatus])
+const currentLabel = computed(() => t(`taskStatus.${props.currentStatus}`))
 const colorClass = computed(() => {
   const badgeClass = TASK_STATUS_COLORS[props.currentStatus]
   return badgeClass === 'badge-gray' ? 'bg-gray-50 border-gray-200 text-gray-700' :
@@ -70,16 +71,7 @@ const allowedTransitions = computed(() => {
     return []
   }
 
-  // Developer can't approve/reject new tasks or move to done if it needs testing
-  if (authStore.role === 'developer') {
-    if (props.currentStatus === 'new') return []
-    if (props.currentStatus === 'assigned') return ['in_progress']
-    if (props.currentStatus === 'in_progress') return ['development_completed']
-    if (props.currentStatus === 'testing') return []
-    if (props.currentStatus === 'waiting_client_feedback') return []
-  }
-
-  // PM and Admin can do anything allowed by the state machine
+  // Developer, PM and Admin follow the full state machine
   return STATUS_TRANSITIONS[props.currentStatus] || []
 })
 

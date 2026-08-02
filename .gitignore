@@ -2,3 +2,9 @@ node_modules/
 .nuxt/
 .output/
 dist/
+.env
+
+# Local logs & tooling
+dev-server.log
+dev-server.err.log
+.claude/

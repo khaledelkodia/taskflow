@@ -12,7 +12,7 @@
         <h1 class="page-title flex items-center gap-3">
           {{ projectsStore.current.name }}
           <UiBadge :color="PROJECT_STATUS_COLORS[projectsStore.current.status].replace('badge-', '') as any">
-            {{ PROJECT_STATUS_LABELS[projectsStore.current.status] }}
+            {{ $t('projectStatus.' + projectsStore.current.status) }}
           </UiBadge>
         </h1>
         <p class="page-subtitle mt-1 flex items-center gap-2" v-if="projectsStore.current.client">
@@ -79,7 +79,7 @@
           <select v-model="filters.status" class="select text-sm" @change="fetchTasks">
             <option value="">{{ $t('tasks.filters.allStatuses') }}</option>
             <option v-for="opt in TASK_STATUS_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
+              {{ $t('taskStatus.' + opt.value) }}
             </option>
           </select>
         </div>
@@ -135,12 +135,12 @@
               </td>
               <td>
                 <UiBadge :color="TASK_STATUS_COLORS[task.status].replace('badge-', '') as any" dot :dotColor="TASK_STATUS_DOT[task.status]">
-                  {{ TASK_STATUS_LABELS[task.status] }}
+                  {{ $t('taskStatus.' + task.status) }}
                 </UiBadge>
               </td>
               <td>
                 <UiBadge :color="PRIORITY_COLORS[task.priority].replace('badge-', '') as any">
-                  {{ PRIORITY_LABELS[task.priority] }}
+                  {{ $t('priority.' + task.priority) }}
                 </UiBadge>
               </td>
               <td class="text-sm text-content-secondary">

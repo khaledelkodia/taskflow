@@ -55,7 +55,7 @@
               {{ project.name }}
             </h3>
             <UiBadge :color="PROJECT_STATUS_COLORS[project.status].replace('badge-', '') as any" class="shrink-0">
-              {{ PROJECT_STATUS_LABELS[project.status] }}
+              {{ $t('projectStatus.' + project.status) }}
             </UiBadge>
           </div>
           

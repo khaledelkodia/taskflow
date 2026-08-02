@@ -19,12 +19,31 @@
       "completedTasks": "Completed Tasks",
       "activeProjects": "Active Projects",
       "totalClients": "Total Clients"
+    },
+    "charts": {
+      "byPriority": "Tasks by Priority",
+      "byStatus": "Tasks by Status",
+      "noTasks": "No tasks found."
     }
+  },
+  "priority": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "projectStatus": {
+    "active": "Active",
+    "on_hold": "On Hold",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
   },
   "tasks": {
     "title": "Tasks",
     "subtitle": "Manage and track all project tasks.",
     "createTask": "Create Task",
+    "viewCards": "Cards view",
+    "viewTable": "Table view",
     "filters": {
       "search": "Search",
       "searchPlaceholder": "Title or description...",
@@ -122,6 +141,17 @@
     "subtitle": "Manage all client organizations and their status.",
     "addClient": "Add Client",
     "searchPlaceholder": "Search by company name, contact person, or email...",
+    "detail": {
+      "taskProgress": "Task Progress",
+      "completedOut": "{done} completed out of {total} total tasks",
+      "inProgress": "In Progress",
+      "newTasks": "New Tasks"
+    },
+    "statusLabels": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "prospect": "Prospect"
+    },
     "table": {
       "companyName": "Company Name",
       "contactPerson": "Contact Person",
@@ -208,7 +238,46 @@
     "commentFailed": "Could not send your comment. Please try again."
   },
   "comments": {
-    "clientLabel": "Client"
+    "clientLabel": "Client",
+    "publicComments": "Public Comments",
+    "internalNotes": "Internal Notes",
+    "empty": "No comments yet. Be the first to start the discussion!",
+    "addInternal": "Add an internal note (only visible to team)...",
+    "addPublic": "Add a public comment (visible to client)...",
+    "submit": "Comment",
+    "toSubmit": "to submit"
+  },
+  "taskHistory": {
+    "empty": "No history recorded yet.",
+    "changed": "changed",
+    "none": "None",
+    "newAssignee": "New Assignee",
+    "fields": {
+      "status": "Status",
+      "priority": "Priority",
+      "assigned_to": "Assignee",
+      "estimated_hours": "Estimate"
+    }
+  },
+  "attachments": {
+    "title": "Attachments",
+    "upload": "Upload File",
+    "empty": "No attachments yet.",
+    "deleteTitle": "Delete attachment",
+    "confirmDelete": "Are you sure you want to delete this attachment?"
+  },
+  "taskStatus": {
+    "new": "New",
+    "under_review": "Under Review",
+    "approved": "Approved",
+    "assigned": "Assigned",
+    "in_progress": "In Progress",
+    "development_completed": "Dev Completed",
+    "testing": "Testing",
+    "waiting_client_feedback": "Awaiting Feedback",
+    "completed": "Completed",
+    "rejected": "Rejected",
+    "cancelled": "Cancelled"
   },
   "users": {
     "title": "User Management",
@@ -227,8 +296,10 @@
     },
     "actions": {
       "activate": "Activate",
-      "deactivate": "Deactivate"
+      "deactivate": "Deactivate",
+      "resetPassword": "Reset password"
     },
+    "resetFor": "New password for",
     "newUser": "New User",
     "form": {
       "fullName": "Full name",

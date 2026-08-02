@@ -1,5 +1,5 @@
 <template>
-  <UiCard title="Tasks by Priority" class="h-full flex flex-col">
+  <UiCard :title="$t('dashboard.charts.byPriority')" class="h-full flex flex-col">
     <div class="flex-1 min-h-[300px] flex items-center justify-center p-4 relative">
       <div v-if="loading" class="absolute inset-0 flex items-center justify-center bg-white/50 z-10">
         <div class="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" />
@@ -13,7 +13,7 @@
       />
       
       <div v-else-if="!loading && isEmpty" class="text-center text-content-muted">
-        <p>No tasks found.</p>
+        <p>{{ $t('dashboard.charts.noTasks') }}</p>
       </div>
     </div>
   </UiCard>
@@ -23,9 +23,12 @@
 import { computed } from 'vue'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'vue-chartjs'
-import { PRIORITY_LABELS, PRIORITY_COLORS } from '~/utils/constants'
+import { PRIORITY_COLORS } from '~/utils/constants'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.defaults.font.family = 'Alexandria, ui-sans-serif, system-ui, sans-serif'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   data: { priority: string; count: number }[]
@@ -49,7 +52,7 @@ const chartData = computed(() => {
   const sortedData = [...props.data].sort((a, b) => order.indexOf(a.priority) - order.indexOf(b.priority))
   
   return {
-    labels: sortedData.map(d => PRIORITY_LABELS[d.priority as keyof typeof PRIORITY_LABELS] || d.priority),
+    labels: sortedData.map(d => t(`priority.${d.priority}`)),
     datasets: [
       {
         label: 'Tasks',
@@ -74,8 +77,8 @@ const chartOptions = {
     },
     tooltip: {
       backgroundColor: '#0F172A',
-      titleFont: { family: 'Inter', size: 13 },
-      bodyFont: { family: 'Inter', size: 13 },
+      titleFont: { family: 'Alexandria', size: 13 },
+      bodyFont: { family: 'Alexandria', size: 13 },
       padding: 12,
       cornerRadius: 8
     }
@@ -89,7 +92,7 @@ const chartOptions = {
       },
       ticks: {
         stepSize: 1,
-        font: { family: 'Inter' }
+        font: { family: 'Alexandria' }
       }
     },
     x: {
@@ -98,7 +101,7 @@ const chartOptions = {
         drawBorder: false
       },
       ticks: {
-        font: { family: 'Inter' }
+        font: { family: 'Alexandria' }
       }
     }
   }

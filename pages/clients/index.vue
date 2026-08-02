@@ -80,7 +80,7 @@
               </td>
               <td>
                 <UiBadge :color="CLIENT_STATUS_COLORS[client.status].replace('badge-', '') as any">
-                  {{ CLIENT_STATUS_LABELS[client.status] }}
+                  {{ $t('clients.statusLabels.' + client.status) }}
                 </UiBadge>
               </td>
               <td class="text-sm text-content-secondary">

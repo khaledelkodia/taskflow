@@ -1,5 +1,5 @@
 <template>
-  <UiCard title="Tasks by Status" class="h-full flex flex-col">
+  <UiCard :title="$t('dashboard.charts.byStatus')" class="h-full flex flex-col">
     <div class="flex-1 min-h-[300px] flex items-center justify-center p-4 relative">
       <div v-if="loading" class="absolute inset-0 flex items-center justify-center bg-white/50 z-10">
         <div class="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" />
@@ -13,7 +13,7 @@
       />
       
       <div v-else-if="!loading && isEmpty" class="text-center text-content-muted">
-        <p>No tasks found.</p>
+        <p>{{ $t('dashboard.charts.noTasks') }}</p>
       </div>
     </div>
   </UiCard>
@@ -23,9 +23,12 @@
 import { computed } from 'vue'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
-import { TASK_STATUS_LABELS, TASK_STATUS_COLORS } from '~/utils/constants'
+import { TASK_STATUS_COLORS } from '~/utils/constants'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.defaults.font.family = 'Alexandria, ui-sans-serif, system-ui, sans-serif'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   data: { status: string; count: number }[]
@@ -53,7 +56,7 @@ const chartData = computed(() => {
   const activeData = props.data.filter(d => d.count > 0)
   
   return {
-    labels: activeData.map(d => TASK_STATUS_LABELS[d.status as keyof typeof TASK_STATUS_LABELS] || d.status),
+    labels: activeData.map(d => t(`taskStatus.${d.status}`)),
     datasets: [
       {
         data: activeData.map(d => d.count),
@@ -79,15 +82,15 @@ const chartOptions = {
         usePointStyle: true,
         padding: 20,
         font: {
-          family: 'Inter',
+          family: 'Alexandria',
           size: 12
         }
       }
     },
     tooltip: {
       backgroundColor: '#0F172A',
-      titleFont: { family: 'Inter', size: 13 },
-      bodyFont: { family: 'Inter', size: 13 },
+      titleFont: { family: 'Alexandria', size: 13 },
+      bodyFont: { family: 'Alexandria', size: 13 },
       padding: 12,
       cornerRadius: 8,
       displayColors: true

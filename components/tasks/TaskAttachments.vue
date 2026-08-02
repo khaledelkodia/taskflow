@@ -2,7 +2,7 @@
   <div class="space-y-4">
     <!-- Header -->
     <div class="flex items-center justify-between border-b border-app-border pb-3">
-      <h3 class="text-sm font-medium text-content-primary">Attachments ({{ tasksStore.attachments.length }})</h3>
+      <h3 class="text-sm font-medium text-content-primary">{{ $t('attachments.title') }} ({{ tasksStore.attachments.length }})</h3>
       
       <!-- Upload Button -->
       <div v-if="canUpload" class="relative">
@@ -22,7 +22,7 @@
           <template #icon>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
           </template>
-          Upload File
+          {{ $t('attachments.upload') }}
         </UiButton>
       </div>
     </div>
@@ -34,7 +34,7 @@
 
     <!-- Attachments List -->
     <div v-if="!tasksStore.attachments.length" class="text-center py-6 text-content-muted text-sm border border-dashed border-gray-300 rounded-lg bg-gray-50">
-      No attachments yet.
+      {{ $t('attachments.empty') }}
     </div>
 
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -67,7 +67,7 @@
         <button 
           v-if="canDelete(file.uploaded_by)"
           class="absolute top-2 right-2 p-1.5 text-gray-400 hover:text-danger hover:bg-danger-50 rounded-md opacity-0 group-hover:opacity-100 transition-all"
-          title="Delete attachment"
+          :title="$t('attachments.deleteTitle')"
           @click="deleteFile(file.id, file.file_url)"
           :disabled="deleting === file.id"
         >
@@ -87,6 +87,7 @@ import { hasPermission } from '~/utils/permissions'
 const props = defineProps<{ taskId: string }>()
 const tasksStore = useTasksStore()
 const authStore = useAuthStore()
+const { t } = useI18n()
 
 const uploading = ref(false)
 const error = ref('')
@@ -124,7 +125,7 @@ async function handleFileUpload(e: Event) {
 }
 
 async function deleteFile(id: string, url: string) {
-  if (!confirm('Are you sure you want to delete this attachment?')) return
+  if (!confirm(t('attachments.confirmDelete'))) return
   
   deleting.value = id
   try {

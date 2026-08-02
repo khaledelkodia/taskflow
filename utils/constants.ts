@@ -175,18 +175,21 @@ export const NOTIFICATION_LABELS: Record<NotificationType, string> = {
 
 // ─── Task Status Transitions ──────────────────────────────────────────
 // Maps current status → allowed next statuses per role
+// Freer workflow: from most working states you can jump straight to the
+// common targets (in progress / completed / cancelled) plus the natural next
+// step — instead of stepping through every stage one by one.
 export const STATUS_TRANSITIONS: Record<TaskStatus, TaskStatus[]> = {
-  new: ['under_review', 'cancelled'],
-  under_review: ['approved', 'rejected', 'cancelled'],
-  approved: ['assigned', 'cancelled'],
-  assigned: ['in_progress', 'cancelled'],
-  in_progress: ['development_completed', 'cancelled'],
-  development_completed: ['testing', 'in_progress'],
-  testing: ['waiting_client_feedback', 'completed', 'in_progress'],
-  waiting_client_feedback: ['completed', 'in_progress'],
-  completed: [],
-  rejected: ['new'],
-  cancelled: ['new']
+  new: ['under_review', 'approved', 'in_progress', 'cancelled'],
+  under_review: ['approved', 'rejected', 'in_progress', 'cancelled'],
+  approved: ['assigned', 'in_progress', 'cancelled'],
+  assigned: ['in_progress', 'development_completed', 'cancelled'],
+  in_progress: ['development_completed', 'testing', 'completed', 'cancelled'],
+  development_completed: ['testing', 'in_progress', 'completed', 'cancelled'],
+  testing: ['waiting_client_feedback', 'completed', 'in_progress', 'cancelled'],
+  waiting_client_feedback: ['completed', 'in_progress', 'cancelled'],
+  completed: ['in_progress'],
+  rejected: ['new', 'in_progress'],
+  cancelled: ['new', 'in_progress']
 }
 
 // ─── Avatar color palette ─────────────────────────────────────────────

@@ -39,7 +39,7 @@
         <div class="form-group">
           <label class="label">{{ $t('taskForm.priority') }} <span class="text-danger">*</span></label>
           <select v-model="form.priority" class="select" required>
-            <option v-for="opt in PRIORITY_OPTIONS" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+            <option v-for="opt in PRIORITY_OPTIONS" :key="opt.value" :value="opt.value">{{ $t('priority.' + opt.value) }}</option>
           </select>
         </div>
       </div>

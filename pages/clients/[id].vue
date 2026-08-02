@@ -12,7 +12,7 @@
         <h1 class="page-title flex items-center gap-3">
           {{ clientsStore.current.company_name }}
           <UiBadge :color="CLIENT_STATUS_COLORS[clientsStore.current.status].replace('badge-', '') as any">
-            {{ CLIENT_STATUS_LABELS[clientsStore.current.status] }}
+            {{ $t('clients.statusLabels.' + clientsStore.current.status) }}
           </UiBadge>
         </h1>
         <p class="page-subtitle mt-1 flex items-center gap-4">
@@ -75,13 +75,13 @@
       <UiCard class="md:col-span-2">
         <div class="p-6">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-sm font-semibold text-content-secondary">Task Progress</h3>
+            <h3 class="text-sm font-semibold text-content-secondary">{{ $t('clients.detail.taskProgress') }}</h3>
             <span class="text-2xl font-bold text-primary">{{ progressPercentage }}%</span>
           </div>
           <div class="w-full bg-gray-100 rounded-full h-3 mb-2 overflow-hidden">
             <div class="bg-primary h-3 rounded-full transition-all duration-500 ease-out" :style="{ width: `${progressPercentage}%` }"></div>
           </div>
-          <p class="text-xs text-content-muted">{{ completedTasksCount }} completed out of {{ totalTasksCount }} total tasks</p>
+          <p class="text-xs text-content-muted">{{ $t('clients.detail.completedOut', { done: completedTasksCount, total: totalTasksCount }) }}</p>
         </div>
       </UiCard>
 
@@ -90,7 +90,7 @@
           <div class="w-10 h-10 mx-auto bg-warning-50 text-warning-600 rounded-full flex items-center justify-center mb-2">
             <Clock class="w-5 h-5" />
           </div>
-          <p class="text-sm font-medium text-content-secondary">In Progress</p>
+          <p class="text-sm font-medium text-content-secondary">{{ $t('clients.detail.inProgress') }}</p>
           <p class="text-2xl font-bold mt-1">{{ inProgressTasksCount }}</p>
         </div>
       </UiCard>
@@ -100,7 +100,7 @@
           <div class="w-10 h-10 mx-auto bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mb-2">
             <Inbox class="w-5 h-5" />
           </div>
-          <p class="text-sm font-medium text-content-secondary">New Tasks</p>
+          <p class="text-sm font-medium text-content-secondary">{{ $t('clients.detail.newTasks') }}</p>
           <p class="text-2xl font-bold mt-1">{{ newTasksCount }}</p>
         </div>
       </UiCard>
@@ -125,7 +125,7 @@
           <select v-model="filters.status" class="select text-sm" @change="fetchTasks">
             <option value="">{{ $t('tasks.filters.allStatuses') }}</option>
             <option v-for="opt in TASK_STATUS_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
+              {{ $t('taskStatus.' + opt.value) }}
             </option>
           </select>
         </div>
@@ -181,12 +181,12 @@
               </td>
               <td>
                 <UiBadge :color="TASK_STATUS_COLORS[task.status].replace('badge-', '') as any" dot :dotColor="TASK_STATUS_DOT[task.status]">
-                  {{ TASK_STATUS_LABELS[task.status] }}
+                  {{ $t('taskStatus.' + task.status) }}
                 </UiBadge>
               </td>
               <td>
                 <UiBadge :color="PRIORITY_COLORS[task.priority].replace('badge-', '') as any">
-                  {{ PRIORITY_LABELS[task.priority] }}
+                  {{ $t('priority.' + task.priority) }}
                 </UiBadge>
               </td>
               <td class="text-sm text-content-secondary">

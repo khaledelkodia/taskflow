@@ -7,7 +7,7 @@
         :class="activeTab === 'public' ? 'text-primary' : 'text-content-secondary hover:text-content-primary'"
         @click="activeTab = 'public'"
       >
-        Public Comments
+        {{ $t('comments.publicComments') }}
         <span class="ml-1.5 bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">
           {{ tasksStore.publicComments.length }}
         </span>
@@ -20,7 +20,7 @@
         :class="activeTab === 'internal' ? 'text-primary' : 'text-content-secondary hover:text-content-primary'"
         @click="activeTab = 'internal'"
       >
-        Internal Notes
+        {{ $t('comments.internalNotes') }}
         <span class="ml-1.5 bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">
           {{ tasksStore.internalComments.length }}
         </span>
@@ -31,7 +31,7 @@
     <!-- Comment List -->
     <div class="space-y-6">
       <div v-if="!currentComments.length" class="text-center py-8 text-content-muted text-sm">
-        No comments yet. Be the first to start the discussion!
+        {{ $t('comments.empty') }}
       </div>
 
       <div
@@ -73,14 +73,14 @@
         <textarea
           v-model="newComment"
           class="textarea w-full min-h-[100px]"
-          :placeholder="activeTab === 'internal' ? 'Add an internal note (only visible to team)...' : 'Add a public comment (visible to client)...'"
+          :placeholder="activeTab === 'internal' ? $t('comments.addInternal') : $t('comments.addPublic')"
           @keydown.enter.ctrl.prevent="submitComment"
           @keydown.enter.meta.prevent="submitComment"
         />
         <div class="mt-3 flex items-center justify-between">
           <p class="text-xs text-content-muted">
             <kbd class="px-1.5 py-0.5 bg-gray-100 border border-gray-200 rounded text-gray-500 font-sans">Ctrl</kbd> + 
-            <kbd class="px-1.5 py-0.5 bg-gray-100 border border-gray-200 rounded text-gray-500 font-sans">Enter</kbd> to submit
+            <kbd class="px-1.5 py-0.5 bg-gray-100 border border-gray-200 rounded text-gray-500 font-sans">Enter</kbd> {{ $t('comments.toSubmit') }}
           </p>
           <UiButton
             variant="primary"
@@ -88,7 +88,7 @@
             :disabled="!newComment.trim()"
             @click="submitComment"
           >
-            Comment
+            {{ $t('comments.submit') }}
           </UiButton>
         </div>
       </div>

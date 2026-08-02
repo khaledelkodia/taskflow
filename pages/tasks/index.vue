@@ -6,6 +6,28 @@
         <p class="page-subtitle">{{ $t('tasks.subtitle') }}</p>
       </div>
       <div class="flex items-center gap-3">
+        <!-- View toggle -->
+        <div class="inline-flex rounded-xl border border-gray-200 bg-white p-0.5 shadow-sm">
+          <button
+            type="button"
+            class="p-2 rounded-lg transition-colors"
+            :class="view === 'cards' ? 'bg-primary-50 text-primary' : 'text-content-muted hover:text-content-primary'"
+            :aria-label="$t('tasks.viewCards')"
+            @click="setView('cards')"
+          >
+            <LayoutGrid class="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            class="p-2 rounded-lg transition-colors"
+            :class="view === 'table' ? 'bg-primary-50 text-primary' : 'text-content-muted hover:text-content-primary'"
+            :aria-label="$t('tasks.viewTable')"
+            @click="setView('table')"
+          >
+            <List class="w-4 h-4" />
+          </button>
+        </div>
+
         <UiButton
           v-if="hasPermission(authStore.role, 'create_tasks')"
           variant="primary"
@@ -35,7 +57,7 @@
           <select v-model="filters.status" class="select text-sm" @change="fetchData">
             <option value="">{{ $t('tasks.filters.allStatuses') }}</option>
             <option v-for="opt in TASK_STATUS_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
+              {{ $t('taskStatus.' + opt.value) }}
             </option>
           </select>
         </div>
@@ -45,7 +67,7 @@
           <select v-model="filters.priority" class="select text-sm" @change="fetchData">
             <option value="">{{ $t('tasks.filters.allPriorities') }}</option>
             <option v-for="opt in PRIORITY_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
+              {{ $t('priority.' + opt.value) }}
             </option>
           </select>
         </div>
@@ -66,8 +88,75 @@
       </div>
     </UiCard>
 
-    <!-- Task List -->
-    <UiCard class="overflow-hidden">
+    <!-- Loading (cards view) -->
+    <div v-if="view === 'cards' && tasksStore.loading" class="flex justify-center py-16">
+      <div class="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" />
+    </div>
+
+    <!-- Empty (cards view) -->
+    <UiCard v-else-if="view === 'cards' && !tasksStore.tasks.length">
+      <div class="empty-state">
+        <p class="text-content-primary font-medium">{{ $t('tasks.empty.title') }}</p>
+        <p class="text-sm text-content-muted mt-1">{{ $t('tasks.empty.subtitle') }}</p>
+      </div>
+    </UiCard>
+
+    <!-- Cards view -->
+    <div v-else-if="view === 'cards'" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+      <div
+        v-for="task in tasksStore.tasks"
+        :key="task.id"
+        class="card card-hover p-5 flex flex-col gap-4 group relative"
+        @click="navigateTo(`/tasks/${task.id}`)"
+      >
+        <!-- Top row -->
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="text-lg shrink-0" :title="TASK_TYPE_LABELS[task.type]">{{ TASK_TYPE_ICONS[task.type] }}</span>
+            <span class="text-[11px] font-bold text-content-muted tracking-wider shrink-0">{{ formatTaskNumber(task.task_number) }}</span>
+            <UiBadge :color="TASK_STATUS_COLORS[task.status].replace('badge-', '') as any" dot :dotColor="TASK_STATUS_DOT[task.status]">
+              {{ $t('taskStatus.' + task.status) }}
+            </UiBadge>
+          </div>
+          <!-- Hover actions -->
+          <div
+            v-if="hasPermission(authStore.role, 'update_status')"
+            class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+          >
+            <button class="p-1.5 rounded-lg hover:bg-gray-100 text-content-secondary" :title="$t('common.edit', 'Edit')" @click.stop="openEditModal(task)">
+              <Edit class="w-4 h-4" />
+            </button>
+            <button v-if="hasPermission(authStore.role, 'delete_tasks')" class="p-1.5 rounded-lg hover:bg-danger-50 text-danger" :title="$t('common.delete', 'Delete')" @click.stop="deleteTask(task.id)">
+              <Trash2 class="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Title + project -->
+        <div class="min-w-0">
+          <h3 class="font-semibold text-content-primary leading-snug truncate-2 group-hover:text-primary transition-colors">{{ task.title }}</h3>
+          <p class="text-xs text-content-muted mt-1.5 truncate">
+            {{ task.project?.name ?? '—' }}<span v-if="task.client?.company_name"> · {{ task.client.company_name }}</span>
+          </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-auto flex items-center justify-between gap-2 pt-3 border-t border-gray-100">
+          <UiBadge :color="PRIORITY_COLORS[task.priority].replace('badge-', '') as any">
+            {{ $t('priority.' + task.priority) }}
+          </UiBadge>
+          <div class="flex items-center gap-2.5">
+            <span class="text-xs" :class="isOverdue(task.due_date, task.status) ? 'text-danger font-semibold' : 'text-content-muted'">
+              {{ task.due_date ? formatDate(task.due_date) : '—' }}
+            </span>
+            <UiAvatar v-if="task.assignee" :name="task.assignee.full_name" size="sm" :title="task.assignee.full_name" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task List (table view) -->
+    <UiCard v-else class="overflow-hidden">
       <div class="table-wrapper">
         <table class="table">
           <thead>
@@ -122,12 +211,12 @@
               </td>
               <td>
                 <UiBadge :color="TASK_STATUS_COLORS[task.status].replace('badge-', '') as any" dot :dotColor="TASK_STATUS_DOT[task.status]">
-                  {{ TASK_STATUS_LABELS[task.status] }}
+                  {{ $t('taskStatus.' + task.status) }}
                 </UiBadge>
               </td>
               <td>
                 <UiBadge :color="PRIORITY_COLORS[task.priority].replace('badge-', '') as any">
-                  {{ PRIORITY_LABELS[task.priority] }}
+                  {{ $t('priority.' + task.priority) }}
                 </UiBadge>
               </td>
               <td>
@@ -154,22 +243,22 @@
           </tbody>
         </table>
       </div>
-      
-      <!-- Pagination -->
-      <div v-if="tasksStore.total > perPage" class="px-6 py-4 border-t border-app-border flex items-center justify-between">
-        <p class="text-sm text-content-muted">
-          {{ $t('tasks.pagination', { start: page * perPage + 1, end: Math.min((page + 1) * perPage, tasksStore.total), total: tasksStore.total }) }}
-        </p>
-        <div class="flex items-center gap-2">
-          <UiButton variant="secondary" size="sm" :disabled="page === 0" @click="page--; fetchData()">
-            {{ $t('tasks.previous') }}
-          </UiButton>
-          <UiButton variant="secondary" size="sm" :disabled="(page + 1) * perPage >= tasksStore.total" @click="page++; fetchData()">
-            {{ $t('tasks.next') }}
-          </UiButton>
-        </div>
-      </div>
     </UiCard>
+
+    <!-- Pagination (shared) -->
+    <div v-if="tasksStore.total > perPage && !tasksStore.loading" class="flex items-center justify-between px-1">
+      <p class="text-sm text-content-muted">
+        {{ $t('tasks.pagination', { start: page * perPage + 1, end: Math.min((page + 1) * perPage, tasksStore.total), total: tasksStore.total }) }}
+      </p>
+      <div class="flex items-center gap-2">
+        <UiButton variant="secondary" size="sm" :disabled="page === 0" @click="page--; fetchData()">
+          {{ $t('tasks.previous') }}
+        </UiButton>
+        <UiButton variant="secondary" size="sm" :disabled="(page + 1) * perPage >= tasksStore.total" @click="page++; fetchData()">
+          {{ $t('tasks.next') }}
+        </UiButton>
+      </div>
+    </div>
 
     <TaskFormModal
       v-model="isModalOpen"
@@ -182,7 +271,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
-import { Edit, Trash2 } from 'lucide-vue-next'
+import { Edit, Trash2, LayoutGrid, List } from 'lucide-vue-next'
 import {
   TASK_STATUS_OPTIONS, TASK_STATUS_LABELS, TASK_STATUS_COLORS, TASK_STATUS_DOT,
   PRIORITY_OPTIONS, PRIORITY_LABELS, PRIORITY_COLORS,
@@ -204,6 +293,19 @@ const page = ref(0)
 const perPage = 25
 const isModalOpen = ref(false)
 const selectedTaskForEdit = ref(null)
+
+// View mode (cards | table), persisted
+const view = ref<'cards' | 'table'>('cards')
+function setView(v: 'cards' | 'table') {
+  view.value = v
+  if (import.meta.client) localStorage.setItem('tasksView', v)
+}
+onMounted(() => {
+  if (import.meta.client) {
+    const saved = localStorage.getItem('tasksView')
+    if (saved === 'table' || saved === 'cards') view.value = saved
+  }
+})
 
 function openCreateModal() {
   selectedTaskForEdit.value = null

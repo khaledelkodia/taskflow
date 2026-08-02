@@ -12,6 +12,11 @@
     "welcome": "مرحباً بعودتك يا {name}! إليك آخر التطورات.",
     "refresh": "تحديث",
     "viewAllTasks": "عرض جميع المهام",
+    "charts": {
+      "byPriority": "المهام حسب الأولوية",
+      "byStatus": "المهام حسب الحالة",
+      "noTasks": "لا توجد مهام."
+    },
     "stats": {
       "totalActiveTasks": "إجمالي المهام النشطة",
       "overdueTasks": "المهام المتأخرة",
@@ -25,6 +30,8 @@
     "title": "المهام",
     "subtitle": "إدارة ومتابعة جميع مهام المشروع.",
     "createTask": "إنشاء مهمة",
+    "viewCards": "عرض كروت",
+    "viewTable": "عرض جدول",
     "filters": {
       "search": "بحث",
       "searchPlaceholder": "العنوان أو الوصف...",
@@ -122,6 +129,17 @@
     "subtitle": "إدارة جميع مؤسسات العملاء وحالتهم.",
     "addClient": "إضافة عميل",
     "searchPlaceholder": "البحث باسم الشركة أو جهة الاتصال أو البريد الإلكتروني...",
+    "detail": {
+      "taskProgress": "تقدّم المهام",
+      "completedOut": "{done} مكتملة من إجمالي {total} مهمة",
+      "inProgress": "قيد التنفيذ",
+      "newTasks": "مهام جديدة"
+    },
+    "statusLabels": {
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "prospect": "محتمل"
+    },
     "table": {
       "companyName": "اسم الشركة",
       "contactPerson": "جهة الاتصال",
@@ -208,7 +226,58 @@
     "commentFailed": "تعذّر إرسال التعليق. حاول مرة أخرى."
   },
   "comments": {
-    "clientLabel": "العميل"
+    "clientLabel": "العميل",
+    "publicComments": "تعليقات عامة",
+    "internalNotes": "ملاحظات داخلية",
+    "empty": "لا توجد تعليقات بعد. كن أول من يبدأ النقاش!",
+    "addInternal": "أضف ملاحظة داخلية (تظهر للفريق فقط)...",
+    "addPublic": "أضف تعليقًا عامًا (يظهر للعميل)...",
+    "submit": "إرسال",
+    "toSubmit": "للإرسال"
+  },
+  "priority": {
+    "critical": "حرجة",
+    "high": "عالية",
+    "medium": "متوسطة",
+    "low": "منخفضة"
+  },
+  "projectStatus": {
+    "active": "نشط",
+    "on_hold": "متوقف مؤقتًا",
+    "completed": "مكتمل",
+    "cancelled": "ملغي"
+  },
+  "taskHistory": {
+    "empty": "لا يوجد سجل بعد.",
+    "changed": "غيّر",
+    "none": "لا شيء",
+    "newAssignee": "مسؤول جديد",
+    "fields": {
+      "status": "الحالة",
+      "priority": "الأولوية",
+      "assigned_to": "المسؤول",
+      "estimated_hours": "الوقت المقدّر"
+    }
+  },
+  "attachments": {
+    "title": "المرفقات",
+    "upload": "رفع ملف",
+    "empty": "لا توجد مرفقات بعد.",
+    "deleteTitle": "حذف المرفق",
+    "confirmDelete": "متأكد إنك عايز تحذف المرفق ده؟"
+  },
+  "taskStatus": {
+    "new": "جديدة",
+    "under_review": "قيد المراجعة",
+    "approved": "مقبولة",
+    "assigned": "مُسندة",
+    "in_progress": "قيد التنفيذ",
+    "development_completed": "اكتمل التطوير",
+    "testing": "قيد الاختبار",
+    "waiting_client_feedback": "بانتظار رد العميل",
+    "completed": "مكتملة",
+    "rejected": "مرفوضة",
+    "cancelled": "ملغاة"
   },
   "users": {
     "title": "إدارة المستخدمين",
@@ -227,8 +296,10 @@
     },
     "actions": {
       "activate": "تفعيل",
-      "deactivate": "تعطيل"
+      "deactivate": "تعطيل",
+      "resetPassword": "تغيير كلمة المرور"
     },
+    "resetFor": "كلمة مرور جديدة لـ",
     "newUser": "مستخدم جديد",
     "form": {
       "fullName": "الاسم الكامل",
