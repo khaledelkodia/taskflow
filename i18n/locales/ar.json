@@ -59,7 +59,11 @@
     },
     "pagination": "عرض {start} إلى {end} من أصل {total} نتيجة",
     "previous": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "deleteTitle": "حذف المهمة",
+    "confirmDelete": "هل أنت متأكد من حذف هذه المهمة؟ لا يمكن التراجع عن هذا الإجراء.",
+    "deleted": "تم حذف المهمة",
+    "deleteFailed": "فشل حذف المهمة"
   },
   "taskForm": {
     "createTitle": "إنشاء مهمة جديدة",
@@ -119,6 +123,7 @@
     "tasks": "مهام المشروع",
     "saveFailed": "فشل حفظ المشروع",
     "deleteFailed": "فشل حذف المشروع",
+    "deleted": "تم حذف المشروع",
     "statusActive": "نشط",
     "statusOnHold": "قيد الانتظار",
     "statusCompleted": "مكتمل",
@@ -152,7 +157,11 @@
       "title": "لا يوجد عملاء",
       "subtitle": "ابدأ بإنشاء عميلك الأول."
     },
-    "copyLink": "نسخ رابط العميل"
+    "copyLink": "نسخ رابط العميل",
+    "deleteClient": "حذف العميل",
+    "confirmDelete": "هل أنت متأكد من حذف هذا العميل؟ لا يمكن التراجع عن هذا الإجراء.",
+    "deleted": "تم حذف العميل",
+    "deleteFailed": "فشل حذف العميل"
   },
   "login": {
     "welcome": "مرحباً بك في TaskFlow",
@@ -170,7 +179,31 @@
     "save": "حفظ",
     "cancel": "إلغاء",
     "edit": "تعديل",
-    "delete": "حذف"
+    "delete": "حذف",
+    "close": "إغلاق",
+    "confirm": "تأكيد",
+    "confirmTitle": "تأكيد الإجراء",
+    "signOut": "تسجيل الخروج",
+    "copied": "تم النسخ!"
+  },
+  "search": {
+    "placeholder": "ابحث في المهام والمشاريع والعملاء…",
+    "noResults": "لا توجد نتائج",
+    "startTyping": "ابدأ الكتابة للبحث",
+    "navigate": "تنقّل",
+    "select": "فتح",
+    "close": "إغلاق",
+    "groups": {
+      "navigation": "التنقّل",
+      "tasks": "المهام",
+      "projects": "المشاريع",
+      "clients": "العملاء"
+    }
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "markAllRead": "تعليم الكل كمقروء",
+    "empty": "لا توجد إشعارات"
   },
   "taskDetails": {
     "notFound": {
@@ -301,12 +334,17 @@
     },
     "resetFor": "كلمة مرور جديدة لـ",
     "newUser": "مستخدم جديد",
+    "editUser": "تعديل المستخدم",
+    "deleteUser": "حذف المستخدم",
+    "deleteConfirm": "هل أنت متأكد من الحذف النهائي لـ",
+    "deleteWarning": "لا يمكن التراجع عن هذا الإجراء.",
     "form": {
       "fullName": "الاسم الكامل",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
       "passwordHint": "8 أحرف على الأقل.",
-      "role": "الدور"
+      "role": "الدور",
+      "ownRoleLocked": "لا يمكنك تغيير دورك الخاص."
     }
   }
 }

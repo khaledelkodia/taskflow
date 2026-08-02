@@ -18,6 +18,9 @@
         </div>
       </main>
     </div>
+
+    <!-- Global ⌘K search -->
+    <LayoutCommandPalette />
   </div>
 </template>
 

@@ -197,6 +197,8 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const projectsStore = useProjectsStore()
 const tasksStore = useTasksStore()
+const { confirm } = useConfirm()
+const toast = useToast()
 
 const isCreateTaskModalOpen = ref(false)
 const isEditProjectModalOpen = ref(false)
@@ -225,13 +227,19 @@ function resetFilters() {
 }
 
 async function deleteProject() {
-  if (confirm(t('projects.confirmDelete'))) {
-    try {
-      await projectsStore.deleteProject(projectId)
-      navigateTo('/projects')
-    } catch (err) {
-      alert(t('projects.deleteFailed'))
-    }
+  const ok = await confirm({
+    title: t('projects.deleteProject'),
+    message: t('projects.confirmDelete'),
+    confirmText: t('common.delete'),
+    variant: 'danger'
+  })
+  if (!ok) return
+  try {
+    await projectsStore.deleteProject(projectId)
+    toast.success(t('projects.deleted', 'Project deleted'))
+    navigateTo('/projects')
+  } catch (err) {
+    toast.error(t('projects.deleteFailed'))
   }
 }
 

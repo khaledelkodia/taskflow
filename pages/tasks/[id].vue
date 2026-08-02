@@ -186,6 +186,8 @@ const route = useRoute()
 const tasksStore = useTasksStore()
 const authStore = useAuthStore()
 const { t } = useI18n()
+const { confirm } = useConfirm()
+const toast = useToast()
 const taskId = route.params.id as string
 
 const task = computed(() => tasksStore.current)
@@ -196,13 +198,19 @@ async function handleTaskSaved() {
 }
 
 async function handleDelete() {
-  if (confirm(t('common.delete') + '?')) {
-    try {
-      await tasksStore.deleteTask(taskId)
-      navigateTo('/tasks')
-    } catch (err) {
-      alert('Failed to delete task')
-    }
+  const ok = await confirm({
+    title: t('tasks.deleteTitle', 'Delete task'),
+    message: t('tasks.confirmDelete', 'Are you sure you want to delete this task? This action cannot be undone.'),
+    confirmText: t('common.delete'),
+    variant: 'danger'
+  })
+  if (!ok) return
+  try {
+    await tasksStore.deleteTask(taskId)
+    toast.success(t('tasks.deleted', 'Task deleted'))
+    navigateTo('/tasks')
+  } catch (err) {
+    toast.error(t('tasks.deleteFailed', 'Failed to delete task'))
   }
 }
 

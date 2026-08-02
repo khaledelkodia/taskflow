@@ -243,6 +243,8 @@ const authStore = useAuthStore()
 const clientsStore = useClientsStore()
 const tasksStore = useTasksStore()
 const { t } = useI18n()
+const { confirm } = useConfirm()
+const toast = useToast()
 
 const isCreateTaskModalOpen = ref(false)
 const isEditClientModalOpen = ref(false)
@@ -280,13 +282,19 @@ async function fetchClientDetails() {
 }
 
 async function deleteClient() {
-  if (confirm(t('common.delete') + '?')) {
-    try {
-      await clientsStore.deleteClient(clientId)
-      navigateTo('/clients')
-    } catch (err) {
-      alert(t('clientForm.saveFailed'))
-    }
+  const ok = await confirm({
+    title: t('clients.deleteClient', 'Delete client'),
+    message: t('clients.confirmDelete', 'Are you sure you want to delete this client? This action cannot be undone.'),
+    confirmText: t('common.delete'),
+    variant: 'danger'
+  })
+  if (!ok) return
+  try {
+    await clientsStore.deleteClient(clientId)
+    toast.success(t('clients.deleted', 'Client deleted'))
+    navigateTo('/clients')
+  } catch (err) {
+    toast.error(t('clients.deleteFailed', 'Failed to delete client'))
   }
 }
 

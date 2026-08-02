@@ -2,6 +2,8 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <UiToaster />
+  <UiConfirm />
 </template>
 
 <script setup lang="ts">

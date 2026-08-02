@@ -288,6 +288,9 @@ definePageMeta({
 
 const authStore = useAuthStore()
 const tasksStore = useTasksStore()
+const { t } = useI18n()
+const { confirm } = useConfirm()
+const toast = useToast()
 
 const page = ref(0)
 const perPage = 25
@@ -323,13 +326,19 @@ function isOverdue(dateStr: string | null, status: string) {
 }
 
 async function deleteTask(id: string) {
-  if (confirm('Are you sure you want to delete this task?')) {
-    try {
-      await tasksStore.deleteTask(id)
-      fetchData()
-    } catch(err) {
-      alert('Failed to delete task')
-    }
+  const ok = await confirm({
+    title: t('tasks.deleteTitle', 'Delete task'),
+    message: t('tasks.confirmDelete', 'Are you sure you want to delete this task? This action cannot be undone.'),
+    confirmText: t('common.delete'),
+    variant: 'danger'
+  })
+  if (!ok) return
+  try {
+    await tasksStore.deleteTask(id)
+    toast.success(t('tasks.deleted', 'Task deleted'))
+    fetchData()
+  } catch (err) {
+    toast.error(t('tasks.deleteFailed', 'Failed to delete task'))
   }
 }
 

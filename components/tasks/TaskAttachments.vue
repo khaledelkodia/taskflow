@@ -88,6 +88,7 @@ const props = defineProps<{ taskId: string }>()
 const tasksStore = useTasksStore()
 const authStore = useAuthStore()
 const { t } = useI18n()
+const { confirm } = useConfirm()
 
 const uploading = ref(false)
 const error = ref('')
@@ -125,8 +126,14 @@ async function handleFileUpload(e: Event) {
 }
 
 async function deleteFile(id: string, url: string) {
-  if (!confirm(t('attachments.confirmDelete'))) return
-  
+  const ok = await confirm({
+    title: t('attachments.deleteTitle'),
+    message: t('attachments.confirmDelete'),
+    confirmText: t('common.delete'),
+    variant: 'danger'
+  })
+  if (!ok) return
+
   deleting.value = id
   try {
     await tasksStore.deleteAttachment(id, url)
