@@ -41,7 +41,7 @@
     <!-- Filters -->
     <UiCard class="mb-6">
       <div class="p-4 flex flex-wrap gap-4 items-end">
-        <div class="w-full md:w-44">
+        <div class="w-full sm:w-48">
           <label class="label text-xs">{{ $t('tasks.filters.search') }}</label>
           <input
             v-model="filters.search"
@@ -52,7 +52,7 @@
           />
         </div>
 
-        <div class="w-full md:w-36">
+        <div class="w-full sm:w-44">
           <label class="label text-xs">{{ $t('tasks.filters.status') }}</label>
           <select v-model="filters.status" class="select text-sm" @change="fetchData">
             <option value="">{{ $t('tasks.filters.allStatuses') }}</option>
@@ -62,7 +62,7 @@
           </select>
         </div>
 
-        <div class="w-full md:w-32">
+        <div class="w-full sm:w-40">
           <label class="label text-xs">{{ $t('tasks.filters.priority') }}</label>
           <select v-model="filters.priority" class="select text-sm" @change="fetchData">
             <option value="">{{ $t('tasks.filters.allPriorities') }}</option>
@@ -72,7 +72,7 @@
           </select>
         </div>
 
-        <div class="w-full md:w-32">
+        <div class="w-full sm:w-40">
           <label class="label text-xs">{{ $t('tasks.filters.type') }}</label>
           <select v-model="filters.type" class="select text-sm" @change="fetchData">
             <option value="">{{ $t('tasks.filters.allTypes') }}</option>
@@ -83,8 +83,8 @@
         </div>
 
         <!-- Sort -->
-        <div class="w-full md:w-40">
-          <label class="label text-xs flex items-center gap-1"><ArrowUpDown class="w-3 h-3" /> {{ $t('tasks.sort.label') }}</label>
+        <div class="w-full sm:w-44">
+          <label class="label text-xs flex items-center gap-1"><ArrowUpDown class="w-3 h-3 shrink-0" /> {{ $t('tasks.sort.label') }}</label>
           <select v-model="sortBy" class="select text-sm">
             <option v-for="opt in SORT_OPTIONS" :key="opt.value" :value="opt.value">
               {{ $t('tasks.sort.' + opt.value) }}
@@ -93,8 +93,8 @@
         </div>
 
         <!-- Group by -->
-        <div class="w-full md:w-40">
-          <label class="label text-xs flex items-center gap-1"><Rows3 class="w-3 h-3" /> {{ $t('tasks.group.label') }}</label>
+        <div class="w-full sm:w-44">
+          <label class="label text-xs flex items-center gap-1"><Rows3 class="w-3 h-3 shrink-0" /> {{ $t('tasks.group.label') }}</label>
           <select v-model="groupBy" class="select text-sm">
             <option v-for="opt in GROUP_OPTIONS" :key="opt" :value="opt">
               {{ $t('tasks.group.' + opt) }}
