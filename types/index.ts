@@ -174,6 +174,13 @@ export interface TaskFilters {
   date_from?: string
   date_to?: string
   search?: string
+  overdue?: boolean
+}
+
+export type TaskSortField = 'created_at' | 'due_date' | 'priority' | 'title'
+export interface TaskSort {
+  field: TaskSortField
+  dir: 'asc' | 'desc'
 }
 
 // ─── API Payloads ─────────────────────────────────────────────────────

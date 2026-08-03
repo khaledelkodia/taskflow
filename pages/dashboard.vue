@@ -20,50 +20,67 @@
       {{ error }}
     </div>
 
-    <!-- Stat Cards -->
+    <!-- Stat Cards (clickable → filtered lists) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <StatCard
-        :title="$t('dashboard.stats.totalActiveTasks')"
-        :value="stats.active_tasks"
-        :icon="CheckSquare"
-        color="primary"
-        :loading="loading"
-      />
-      <StatCard
-        :title="$t('dashboard.stats.overdueTasks')"
-        :value="stats.overdue_tasks"
-        :icon="AlertCircle"
-        color="danger"
-        :loading="loading"
-      />
-      <StatCard
-        :title="$t('dashboard.stats.tasksInTesting')"
-        :value="stats.tasks_in_testing"
-        :icon="Activity"
-        color="warning"
-        :loading="loading"
-      />
-      <StatCard
-        :title="$t('dashboard.stats.completedTasks')"
-        :value="stats.completed_tasks"
-        :icon="CheckCircle"
-        color="success"
-        :loading="loading"
-      />
-      <StatCard
-        :title="$t('dashboard.stats.activeProjects')"
-        :value="stats.active_projects"
-        :icon="FolderOpen"
-        color="purple"
-        :loading="loading"
-      />
-      <StatCard
-        :title="$t('dashboard.stats.totalClients')"
-        :value="stats.total_clients"
-        :icon="Building2"
-        color="gray"
-        :loading="loading"
-      />
+      <NuxtLink to="/tasks" class="block transition-transform hover:-translate-y-0.5">
+        <StatCard
+          :title="$t('dashboard.stats.totalActiveTasks')"
+          :value="stats.active_tasks"
+          :icon="CheckSquare"
+          color="primary"
+          :loading="loading"
+        />
+      </NuxtLink>
+      <NuxtLink to="/tasks?overdue=1" class="block transition-transform hover:-translate-y-0.5">
+        <StatCard
+          :title="$t('dashboard.stats.overdueTasks')"
+          :value="stats.overdue_tasks"
+          :icon="AlertCircle"
+          color="danger"
+          :loading="loading"
+        />
+      </NuxtLink>
+      <NuxtLink to="/tasks?status=testing" class="block transition-transform hover:-translate-y-0.5">
+        <StatCard
+          :title="$t('dashboard.stats.tasksInTesting')"
+          :value="stats.tasks_in_testing"
+          :icon="Activity"
+          color="warning"
+          :loading="loading"
+        />
+      </NuxtLink>
+      <NuxtLink to="/tasks?status=completed" class="block transition-transform hover:-translate-y-0.5">
+        <StatCard
+          :title="$t('dashboard.stats.completedTasks')"
+          :value="stats.completed_tasks"
+          :icon="CheckCircle"
+          color="success"
+          :loading="loading"
+        />
+      </NuxtLink>
+      <NuxtLink to="/projects" class="block transition-transform hover:-translate-y-0.5">
+        <StatCard
+          :title="$t('dashboard.stats.activeProjects')"
+          :value="stats.active_projects"
+          :icon="FolderOpen"
+          color="purple"
+          :loading="loading"
+        />
+      </NuxtLink>
+      <component
+        :is="canViewClients ? 'NuxtLink' : 'div'"
+        :to="canViewClients ? '/clients' : undefined"
+        class="block"
+        :class="canViewClients ? 'transition-transform hover:-translate-y-0.5' : ''"
+      >
+        <StatCard
+          :title="$t('dashboard.stats.totalClients')"
+          :value="stats.total_clients"
+          :icon="Building2"
+          color="gray"
+          :loading="loading"
+        />
+      </component>
     </div>
 
     <!-- Charts Row -->
@@ -75,16 +92,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import {
   CheckSquare, AlertCircle, Activity, CheckCircle, FolderOpen, Building2, RefreshCw
 } from 'lucide-vue-next'
 import StatCard from '~/components/dashboard/StatCard.vue'
 import TasksByStatusChart from '~/components/dashboard/TasksByStatusChart.vue'
 import TasksByPriorityChart from '~/components/dashboard/TasksByPriorityChart.vue'
+import { canAccessPage } from '~/utils/permissions'
 
 const authStore = useAuthStore()
 const tasksStore = useTasksStore()
+
+const canViewClients = computed(() => canAccessPage(authStore.profile?.role, '/clients'))
 
 const loading = ref(true)
 const error = ref('')

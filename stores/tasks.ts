@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type {
   Task, Comment, TaskHistory, Attachment,
-  CreateTaskPayload, CreateCommentPayload, TaskFilters
+  CreateTaskPayload, CreateCommentPayload, TaskFilters, TaskSort
 } from '~/types'
 import { formatTaskNumber } from '~/utils/formatters'
 
@@ -19,10 +19,15 @@ export const useTasksStore = defineStore('tasks', () => {
   const total = ref(0)
 
   // ─── Fetch Tasks ────────────────────────────────────────
-  async function fetchTasks(filters: TaskFilters = {}, page = 0, perPage = 25) {
+  async function fetchTasks(filters: TaskFilters = {}, page = 0, perPage = 25, sort?: TaskSort) {
     loading.value = true
     error.value = null
     try {
+      // Priority enum is declared critical→low, so ordering by the column
+      // naturally yields the intended priority order.
+      const sortField = sort?.field ?? 'created_at'
+      const ascending = sort ? sort.dir === 'asc' : false
+
       let query = supabase
         .from('tasks')
         .select(`
@@ -32,7 +37,7 @@ export const useTasksStore = defineStore('tasks', () => {
           assignee:profiles!tasks_assigned_to_fkey(id,full_name,role),
           creator:profiles!tasks_created_by_fkey(id,full_name,role)
         `, { count: 'exact' })
-        .order('created_at', { ascending: false })
+        .order(sortField, { ascending, nullsFirst: false })
         .range(page * perPage, (page + 1) * perPage - 1)
 
       // Visibility is enforced by RLS: sales sees only tasks of their own
@@ -46,6 +51,12 @@ export const useTasksStore = defineStore('tasks', () => {
       if (filters.assigned_to) query = query.eq('assigned_to', filters.assigned_to)
       if (filters.date_from)  query = query.gte('created_at', filters.date_from)
       if (filters.date_to)    query = query.lte('created_at', filters.date_to)
+      if (filters.overdue) {
+        const today = new Date().toISOString().split('T')[0]
+        query = query
+          .lt('due_date', today)
+          .not('status', 'in', '(completed,cancelled,rejected)')
+      }
       if (filters.search) {
         query = query.or(
           `title.ilike.%${filters.search}%,description.ilike.%${filters.search}%`
