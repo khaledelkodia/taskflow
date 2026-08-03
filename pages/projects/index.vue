@@ -42,43 +42,46 @@
     </div>
 
     <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-      <UiCard
+      <div
         v-for="project in projectsStore.projects"
         :key="project.id"
-        hoverable
-        class="flex flex-col cursor-pointer"
+        class="project-card group"
         @click="navigateTo(`/projects/${project.id}`)"
       >
-        <div class="p-5 flex-1">
+        <!-- Decorative top-corner sheen -->
+        <span class="project-card__glow" aria-hidden="true" />
+
+        <div class="p-5 flex-1 relative">
           <div class="flex items-start justify-between gap-4 mb-3">
-            <h3 class="text-lg font-semibold text-content-primary leading-tight line-clamp-2">
+            <h3 class="text-lg font-semibold text-white leading-tight line-clamp-2">
               {{ project.name }}
             </h3>
-            <UiBadge :color="PROJECT_STATUS_COLORS[project.status].replace('badge-', '') as any" class="shrink-0">
+            <span class="status-pill">
+              <span class="status-pill__dot" :style="{ background: PROJECT_STATUS_DOT[project.status] }" />
               {{ $t('projectStatus.' + project.status) }}
-            </UiBadge>
+            </span>
           </div>
-          
-          <p v-if="project.description" class="text-sm text-content-secondary line-clamp-3 mb-4">
+
+          <p v-if="project.description" class="text-sm text-blue-100/80 line-clamp-3 mb-4">
             {{ project.description }}
           </p>
         </div>
-        
-        <div class="px-5 py-4 border-t border-app-border bg-app-bg flex items-center justify-between rounded-b-md">
-          <div class="text-sm">
-            <span class="text-content-muted text-xs block mb-0.5">{{ $t('projects.client') }}</span>
-            <span class="font-medium text-content-primary truncate max-w-[150px] inline-block">
+
+        <div class="project-card__footer px-5 py-4 flex items-center justify-between">
+          <div class="text-sm min-w-0">
+            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.client') }}</span>
+            <span class="font-semibold text-white truncate max-w-[150px] inline-block">
               {{ project.client?.company_name }}
             </span>
           </div>
-          <div class="text-sm text-end">
-            <span class="text-content-muted text-xs block mb-0.5">{{ $t('projects.created') }}</span>
-            <span class="text-content-secondary">
+          <div class="text-sm text-end shrink-0">
+            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.created') }}</span>
+            <span class="text-white/90 font-medium">
               {{ formatDate(project.created_at) }}
             </span>
           </div>
         </div>
-      </UiCard>
+      </div>
     </div>
 
     <!-- Project Modal -->
@@ -91,10 +94,18 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { PROJECT_STATUS_LABELS, PROJECT_STATUS_COLORS } from '~/utils/constants'
 import { formatDate } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'
 import ProjectFormModal from '~/components/projects/ProjectFormModal.vue'
+import type { ProjectStatus } from '~/types'
+
+// Status dot colors, tuned for contrast on the blue card
+const PROJECT_STATUS_DOT: Record<ProjectStatus, string> = {
+  active: '#34D399',
+  on_hold: '#FBBF24',
+  completed: '#7DD3FC',
+  cancelled: '#FCA5A5'
+}
 
 definePageMeta({
   middleware: ['auth', 'role']
@@ -124,3 +135,67 @@ onMounted(async () => {
   await fetchData()
 })
 </script>
+
+<style scoped>
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 1rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(150deg, #1D4ED8 0%, #2563EB 42%, #4F46E5 100%);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 14px 32px -12px rgba(37, 99, 235, 0.55);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.08),
+    0 24px 46px -12px rgba(37, 99, 235, 0.68);
+}
+
+/* Soft light sheen in the top corner for a premium feel */
+.project-card__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(90% 62% at 100% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0) 55%);
+}
+
+.project-card__footer {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(2, 6, 23, 0.12);
+}
+
+.status-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.status-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+</style>
