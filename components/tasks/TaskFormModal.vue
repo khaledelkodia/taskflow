@@ -17,8 +17,8 @@
         </select>
       </div>
 
-      <!-- Project filtered by selected client -->
-      <div class="form-group">
+      <!-- Project filtered by selected client (hidden when opened from within a project) -->
+      <div class="form-group" v-if="!preSelectedProjectId">
         <label class="label">{{ $t('taskForm.project') }}</label>
         <select v-model="form.project_id" class="select" :disabled="!form.client_id || projectsStore.loading">
           <option value="">{{ $t('taskForm.noProject') }}</option>
@@ -109,7 +109,11 @@ const props = defineProps<{
   modelValue: boolean
   task?: Task | null
   preSelectedClientId?: string
+  preSelectedProjectId?: string
 }>()
+
+// Guards the client watcher from wiping a pre-selected project on open.
+const initializing = ref(false)
 
 const emit = defineEmits<{
   'update:modelValue': [val: boolean]
@@ -145,6 +149,7 @@ const form = ref<Partial<CreateTaskPayload>>({
 watch(() => props.modelValue, async (val) => {
   if (val) {
     error.value = ''
+    initializing.value = true
     if (isEdit.value && props.task) {
       form.value = {
         title: props.task.title,
@@ -163,7 +168,7 @@ watch(() => props.modelValue, async (val) => {
         title: '',
         description: '',
         client_id: props.preSelectedClientId || '',
-        project_id: '',
+        project_id: props.preSelectedProjectId || '',
         type: 'feature',
         priority: 'medium',
         status: 'new',
@@ -176,11 +181,14 @@ watch(() => props.modelValue, async (val) => {
     await tasksStore.fetchMembers()
     if (!clientsStore.clients.length) await clientsStore.fetchClients()
     if (form.value.client_id) await projectsStore.fetchProjects(form.value.client_id)
+    initializing.value = false
   }
 })
 
 watch(() => form.value.client_id, async (clientId, oldClientId) => {
   if (!props.modelValue) return
+  // Skip while opening (prevents wiping a pre-selected project)
+  if (initializing.value) return
   if (clientId !== oldClientId) form.value.project_id = ''
   if (clientId) {
     await projectsStore.fetchProjects(clientId)

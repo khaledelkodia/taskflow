@@ -155,6 +155,7 @@
     <TaskFormModal
       v-model="isCreateTaskModalOpen"
       :preSelectedClientId="projectsStore.current.client_id"
+      :preSelectedProjectId="projectsStore.current.id"
       @saved="fetchTasks"
     />
 
