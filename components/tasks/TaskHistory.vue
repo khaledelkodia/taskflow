@@ -44,7 +44,7 @@ const tasksStore = useTasksStore()
 const { t } = useI18n()
 
 function formatField(field: string): string {
-  const known = ['status', 'priority', 'assigned_to', 'estimated_hours']
+  const known = ['status', 'priority', 'assigned_to', 'estimated_hours', 'actual_hours']
   return known.includes(field) ? t(`taskHistory.fields.${field}`) : field
 }
 
@@ -52,7 +52,7 @@ function formatValue(field: string, value: string | null | undefined): string {
   if (!value) return t('taskHistory.none')
   if (field === 'status') return t(`taskStatus.${value}`)
   if (field === 'priority') return t(`priority.${value}`)
-  if (field === 'estimated_hours') return `${value}h`
+  if (field === 'estimated_hours' || field === 'actual_hours') return `${value}h`
   if (field === 'assigned_to') return t('taskHistory.newAssignee') // Would need profile lookup to show name ideally
   return value
 }

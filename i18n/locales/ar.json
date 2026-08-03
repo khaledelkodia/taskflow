@@ -100,7 +100,10 @@
     "unassigned": "غير محدد",
     "estimatedHours": "الساعات المقدرة",
     "estimatedHoursPlaceholder": "مثال: 8",
+    "assignedNotif": "تم إسنادك إلى مهمة",
     "dueDate": "تاريخ الاستحقاق",
+    "optional": "(اختياري)",
+    "dueDateHint": "سيبه فاضي لو لسه مفيش موعد محدد (مثلاً في انتظار العميل).",
     "description": "الوصف",
     "descriptionPlaceholder": "قدم معلومات تفصيلية عن المهمة...",
     "saveChanges": "حفظ التغييرات"
@@ -198,6 +201,7 @@
     "cancel": "إلغاء",
     "edit": "تعديل",
     "delete": "حذف",
+    "saveFailed": "فشل الحفظ",
     "close": "إغلاق",
     "confirm": "تأكيد",
     "confirmTitle": "تأكيد الإجراء",
@@ -240,6 +244,8 @@
     "client": "العميل",
     "estimate": "الوقت المقدر",
     "logged": "الوقت المستغرق",
+    "logHours": "تسجيل الساعات",
+    "hoursSaved": "تم تحديث الساعات",
     "dueDate": "تاريخ الاستحقاق",
     "timeline": "التسلسل الزمني"
   },
@@ -307,7 +313,8 @@
       "status": "الحالة",
       "priority": "الأولوية",
       "assigned_to": "المسؤول",
-      "estimated_hours": "الوقت المقدّر"
+      "estimated_hours": "الوقت المقدّر",
+      "actual_hours": "الساعات المسجّلة"
     }
   },
   "attachments": {

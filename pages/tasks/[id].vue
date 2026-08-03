@@ -135,8 +135,36 @@
                   <span class="text-sm text-content-primary">{{ formatHours(task.estimated_hours) }}</span>
                 </div>
                 <div>
-                  <label class="block text-xs font-medium text-content-muted mb-1">{{ $t('taskDetails.logged') }}</label>
-                  <span class="text-sm text-content-primary">{{ formatHours(task.actual_hours) }}</span>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <label class="block text-xs font-medium text-content-muted">{{ $t('taskDetails.logged') }}</label>
+                    <button
+                      v-if="canLogHours && !editingHours"
+                      type="button"
+                      class="text-content-muted hover:text-primary transition-colors"
+                      :title="$t('taskDetails.logHours', 'Log hours')"
+                      @click="startEditHours"
+                    >
+                      <Edit class="w-3 h-3" />
+                    </button>
+                  </div>
+                  <span v-if="!editingHours" class="text-sm text-content-primary">{{ formatHours(task.actual_hours) }}</span>
+                  <div v-else class="flex items-center gap-1">
+                    <input
+                      v-model="hoursInput"
+                      type="number"
+                      min="0"
+                      step="0.5"
+                      class="input text-sm h-8 py-1 w-16"
+                      @keydown.enter.prevent="saveHours"
+                      @keydown.esc.prevent="editingHours = false"
+                    />
+                    <button type="button" class="p-1 rounded-md text-success hover:bg-success-50 disabled:opacity-50" :disabled="savingHours" @click="saveHours">
+                      <Check class="w-4 h-4" />
+                    </button>
+                    <button type="button" class="p-1 rounded-md text-content-muted hover:bg-gray-100" @click="editingHours = false">
+                      <X class="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -166,7 +194,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { Edit, Trash2 } from 'lucide-vue-next'
+import { Edit, Trash2, Check, X } from 'lucide-vue-next'
 import { PRIORITY_LABELS, PRIORITY_COLORS, TASK_TYPE_LABELS, TASK_TYPE_ICONS, TASK_TYPE_COLORS } from '~/utils/constants'
 import { formatTaskNumber, formatDateTime, formatDate, formatHours, isOverdue } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'
@@ -192,6 +220,40 @@ const taskId = route.params.id as string
 
 const task = computed(() => tasksStore.current)
 const isEditModalOpen = ref(false)
+
+// ─── Log hours ───────────────────────────────────────────
+const canLogHours = computed(() => hasPermission(authStore.role, 'log_hours'))
+const editingHours = ref(false)
+const savingHours = ref(false)
+const hoursInput = ref('')
+
+function startEditHours() {
+  hoursInput.value = task.value?.actual_hours != null ? String(task.value.actual_hours) : ''
+  editingHours.value = true
+}
+
+async function saveHours() {
+  if (savingHours.value) return
+  savingHours.value = true
+  try {
+    const prev = task.value?.actual_hours ?? null
+    const val = hoursInput.value === '' ? null : Number(hoursInput.value)
+    await tasksStore.updateTask(taskId, { actual_hours: val } as any)
+    await tasksStore.addHistory(
+      taskId,
+      'actual_hours',
+      prev != null ? String(prev) : null,
+      val != null ? String(val) : null,
+      authStore.profile?.full_name ?? 'Unknown'
+    )
+    toast.success(t('taskDetails.hoursSaved', 'Hours updated'))
+    editingHours.value = false
+  } catch (err) {
+    toast.error(t('common.saveFailed', 'Failed to save'))
+  } finally {
+    savingHours.value = false
+  }
+}
 
 async function handleTaskSaved() {
   await tasksStore.fetchTask(taskId)

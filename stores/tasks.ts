@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type {
   Task, Comment, TaskHistory, Attachment,
-  CreateTaskPayload, CreateCommentPayload, TaskFilters, TaskSort
+  CreateTaskPayload, CreateCommentPayload, TaskFilters, TaskSort, Profile
 } from '~/types'
 import { formatTaskNumber } from '~/utils/formatters'
 
@@ -17,6 +17,19 @@ export const useTasksStore = defineStore('tasks', () => {
   const saving = ref(false)
   const error = ref<string | null>(null)
   const total = ref(0)
+
+  // Team members that a task can be assigned to (executing roles).
+  const members = ref<Pick<Profile, 'id' | 'full_name' | 'role'>[]>([])
+  async function fetchMembers() {
+    if (members.value.length) return
+    const { data } = await supabase
+      .from('profiles')
+      .select('id, full_name, role')
+      .in('role', ['super_admin', 'project_manager', 'developer', 'tester'])
+      .eq('is_active', true)
+      .order('full_name', { ascending: true })
+    members.value = (data ?? []) as Pick<Profile, 'id' | 'full_name' | 'role'>[]
+  }
 
   // ─── Fetch Tasks ────────────────────────────────────────
   async function fetchTasks(filters: TaskFilters = {}, page = 0, perPage = 25, sort?: TaskSort) {
@@ -425,6 +438,7 @@ export const useTasksStore = defineStore('tasks', () => {
     fetchHistory, addHistory,
     fetchAttachments, uploadAttachment, deleteAttachment,
     fetchStats, fetchStatusBreakdown, fetchPriorityBreakdown,
-    createNotification
+    createNotification,
+    members, fetchMembers
   }
 })

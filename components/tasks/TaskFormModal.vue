@@ -44,10 +44,37 @@
         </div>
       </div>
 
-      <!-- Due Date -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Assignee -->
+        <div class="form-group">
+          <label class="label flex items-center gap-2">
+            {{ $t('taskForm.assignee') }}
+            <span class="text-xs font-normal text-content-muted">{{ $t('taskForm.optional', '(optional)') }}</span>
+          </label>
+          <select v-model="form.assigned_to" class="select">
+            <option value="">{{ $t('taskForm.unassigned') }}</option>
+            <option v-for="m in tasksStore.members" :key="m.id" :value="m.id">{{ m.full_name }}</option>
+          </select>
+        </div>
+
+        <!-- Estimated hours -->
+        <div class="form-group">
+          <label class="label flex items-center gap-2">
+            {{ $t('taskForm.estimatedHours') }}
+            <span class="text-xs font-normal text-content-muted">{{ $t('taskForm.optional', '(optional)') }}</span>
+          </label>
+          <input v-model="estimatedHours" type="number" min="0" step="0.5" class="input" :placeholder="$t('taskForm.estimatedHoursPlaceholder')" />
+        </div>
+      </div>
+
+      <!-- Due Date (optional) -->
       <div class="form-group">
-        <label class="label">{{ $t('taskForm.dueDate') }}</label>
+        <label class="label flex items-center gap-2">
+          {{ $t('taskForm.dueDate') }}
+          <span class="text-xs font-normal text-content-muted">{{ $t('taskForm.optional', '(optional)') }}</span>
+        </label>
         <input v-model="form.due_date" type="date" class="input" />
+        <p class="text-xs text-content-muted mt-1">{{ $t('taskForm.dueDateHint', 'Leave empty if there is no fixed date yet (e.g. waiting on the client).') }}</p>
       </div>
 
       <!-- Description -->
@@ -94,9 +121,14 @@ const isEdit = computed(() => !!props.task)
 const tasksStore = useTasksStore()
 const clientsStore = useClientsStore()
 const projectsStore = useProjectsStore()
+const authStore = useAuthStore()
+const { t } = useI18n()
 
 const saving = ref(false)
 const error = ref('')
+
+// Estimated hours is kept as a string (from the number input) and converted on submit.
+const estimatedHours = ref('')
 
 const form = ref<Partial<CreateTaskPayload>>({
   title: '',
@@ -106,6 +138,7 @@ const form = ref<Partial<CreateTaskPayload>>({
   type: 'feature',
   priority: 'medium',
   status: 'new',
+  assigned_to: '',
   due_date: ''
 })
 
@@ -121,8 +154,10 @@ watch(() => props.modelValue, async (val) => {
         type: props.task.type,
         priority: props.task.priority,
         status: props.task.status,
+        assigned_to: props.task.assigned_to || '',
         due_date: props.task.due_date || ''
       }
+      estimatedHours.value = props.task.estimated_hours != null ? String(props.task.estimated_hours) : ''
     } else {
       form.value = {
         title: '',
@@ -132,10 +167,13 @@ watch(() => props.modelValue, async (val) => {
         type: 'feature',
         priority: 'medium',
         status: 'new',
+        assigned_to: '',
         due_date: ''
       }
+      estimatedHours.value = ''
     }
 
+    await tasksStore.fetchMembers()
     if (!clientsStore.clients.length) await clientsStore.fetchClients()
     if (form.value.client_id) await projectsStore.fetchProjects(form.value.client_id)
   }
@@ -155,10 +193,15 @@ async function handleSubmit() {
   saving.value = true
   error.value = ''
   try {
+    const prevAssignee = props.task?.assigned_to ?? null
+    const prevEstimate = props.task?.estimated_hours ?? null
+
     const payload = {
       ...form.value,
       project_id: form.value.project_id || null,
-      assigned_to: null,
+      due_date: form.value.due_date || null,
+      assigned_to: form.value.assigned_to || null,
+      estimated_hours: estimatedHours.value === '' ? null : Number(estimatedHours.value),
     } as CreateTaskPayload
 
     let savedTask: Task
@@ -167,7 +210,32 @@ async function handleSubmit() {
     } else {
       savedTask = await tasksStore.createTask(payload)
     }
-    
+
+    const actorName = authStore.profile?.full_name ?? 'Unknown'
+    const newAssignee = payload.assigned_to ?? null
+    const newEstimate = payload.estimated_hours ?? null
+
+    // Record & notify assignment changes
+    if (newAssignee && newAssignee !== prevAssignee) {
+      await tasksStore.addHistory(savedTask.id, 'assigned_to', prevAssignee, newAssignee, actorName)
+      await tasksStore.createNotification(
+        savedTask.id,
+        'task_assigned',
+        `${t('taskForm.assignedNotif', 'You were assigned to a task')}: ${savedTask.title}`
+      )
+    }
+
+    // Record estimate changes on edit
+    if (isEdit.value && Number(prevEstimate) !== Number(newEstimate)) {
+      await tasksStore.addHistory(
+        savedTask.id,
+        'estimated_hours',
+        prevEstimate != null ? String(prevEstimate) : null,
+        newEstimate != null ? String(newEstimate) : null,
+        actorName
+      )
+    }
+
     emit('saved', savedTask)
     emit('update:modelValue', false)
   } catch (err: any) {

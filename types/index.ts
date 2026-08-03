@@ -206,13 +206,13 @@ export interface CreateTaskPayload {
   title: string
   description?: string
   client_id: string
-  project_id?: string
+  project_id?: string | null
   type: TaskType
   priority: Priority
   status: TaskStatus
-  assigned_to?: string
-  estimated_hours?: number
-  due_date?: string
+  assigned_to?: string | null
+  estimated_hours?: number | null
+  due_date?: string | null
 }
 
 export interface CreateCommentPayload {

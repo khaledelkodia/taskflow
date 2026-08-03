@@ -112,7 +112,10 @@
     "unassigned": "Unassigned",
     "estimatedHours": "Estimated Hours",
     "estimatedHoursPlaceholder": "e.g. 8",
+    "assignedNotif": "You were assigned to a task",
     "dueDate": "Due Date",
+    "optional": "(optional)",
+    "dueDateHint": "Leave empty if there is no fixed date yet (e.g. waiting on the client).",
     "description": "Description",
     "descriptionPlaceholder": "Provide detailed information about the task...",
     "saveChanges": "Save Changes"
@@ -210,6 +213,7 @@
     "cancel": "Cancel",
     "edit": "Edit",
     "delete": "Delete",
+    "saveFailed": "Failed to save",
     "close": "Close",
     "confirm": "Confirm",
     "confirmTitle": "Please confirm",
@@ -252,6 +256,8 @@
     "client": "Client",
     "estimate": "Estimate",
     "logged": "Logged",
+    "logHours": "Log hours",
+    "hoursSaved": "Hours updated",
     "dueDate": "Due Date",
     "timeline": "Timeline"
   },
@@ -307,7 +313,8 @@
       "status": "Status",
       "priority": "Priority",
       "assigned_to": "Assignee",
-      "estimated_hours": "Estimate"
+      "estimated_hours": "Estimate",
+      "actual_hours": "Logged hours"
     }
   },
   "attachments": {
