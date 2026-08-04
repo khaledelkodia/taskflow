@@ -62,20 +62,20 @@
             </span>
           </div>
 
-          <p v-if="project.description" class="text-sm text-white/85 line-clamp-3 mb-4">
+          <p v-if="project.description" class="text-sm text-blue-100/80 line-clamp-3 mb-4">
             {{ project.description }}
           </p>
         </div>
 
         <div class="project-card__footer px-5 py-4 flex items-center justify-between">
           <div class="text-sm min-w-0">
-            <span class="text-white/70 text-xs block mb-0.5">{{ $t('projects.client') }}</span>
+            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.client') }}</span>
             <span class="font-semibold text-white truncate max-w-[150px] inline-block">
               {{ project.client?.company_name }}
             </span>
           </div>
           <div class="text-sm text-end shrink-0">
-            <span class="text-white/70 text-xs block mb-0.5">{{ $t('projects.created') }}</span>
+            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.created') }}</span>
             <span class="text-white/90 font-medium">
               {{ formatDate(project.created_at) }}
             </span>
@@ -145,11 +145,11 @@ onMounted(async () => {
   cursor: pointer;
   border-radius: 1rem;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(150deg, #4C8DF6 0%, #5B93F7 45%, #7C82F2 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(150deg, #1D4ED8 0%, #2563EB 42%, #4F46E5 100%);
   box-shadow:
-    0 1px 2px rgba(16, 24, 40, 0.04),
-    0 14px 34px -14px rgba(59, 130, 246, 0.42);
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 14px 32px -12px rgba(37, 99, 235, 0.55);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.28s ease;
 }
@@ -157,24 +157,22 @@ onMounted(async () => {
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 1px 2px rgba(16, 24, 40, 0.05),
-    0 22px 46px -14px rgba(59, 130, 246, 0.55);
+    0 1px 2px rgba(16, 24, 40, 0.08),
+    0 24px 46px -12px rgba(37, 99, 235, 0.68);
 }
 
-/* Luminous light: a bright top-corner beam plus a soft lower glow */
+/* Soft light sheen in the top corner for a premium feel */
 .project-card__glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(95% 65% at 100% -8%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 55%),
-    radial-gradient(75% 55% at 12% 112%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%);
+  background: radial-gradient(90% 62% at 100% 0%, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0) 55%);
 }
 
 .project-card__footer {
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(2, 6, 23, 0.12);
 }
 
 .status-pill {
