@@ -46,7 +46,7 @@
         v-for="project in projectsStore.projects"
         :key="project.id"
         class="project-card group"
-        :class="{ 'project-card--completed': project.status === 'completed' }"
+        :class="{ 'project-card--completed': effectiveStatus(project) === 'completed' }"
         @click="navigateTo(`/projects/${project.id}`)"
       >
         <!-- Decorative top-corner sheen -->
@@ -58,8 +58,8 @@
               {{ project.name }}
             </h3>
             <span class="status-pill">
-              <span class="status-pill__dot" :style="{ background: PROJECT_STATUS_DOT[project.status] }" />
-              {{ $t('projectStatus.' + project.status) }}
+              <span class="status-pill__dot" :style="{ background: PROJECT_STATUS_DOT[effectiveStatus(project)] }" />
+              {{ $t('projectStatus.' + effectiveStatus(project)) }}
             </span>
           </div>
 
@@ -98,7 +98,7 @@ import { ref, onMounted } from 'vue'
 import { formatDate } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'
 import ProjectFormModal from '~/components/projects/ProjectFormModal.vue'
-import type { ProjectStatus } from '~/types'
+import type { Project, ProjectStatus } from '~/types'
 
 // Status dot colors, tuned for contrast on the blue card
 const PROJECT_STATUS_DOT: Record<ProjectStatus, string> = {
@@ -115,12 +115,38 @@ definePageMeta({
 const authStore = useAuthStore()
 const projectsStore = useProjectsStore()
 const clientsStore = useClientsStore()
+const supabase = useSupabaseClient()
 
 const selectedClient = ref('')
 const isCreateModalOpen = ref(false)
 
+// Per-project task completion (project_id -> { total, completed })
+const completion = ref<Record<string, { total: number; completed: number }>>({})
+
+async function fetchCompletion() {
+  const { data } = await supabase.from('tasks').select('project_id,status')
+  const map: Record<string, { total: number; completed: number }> = {}
+  for (const t of (data ?? []) as { project_id: string | null; status: string }[]) {
+    if (!t.project_id) continue
+    const e = map[t.project_id] || (map[t.project_id] = { total: 0, completed: 0 })
+    e.total++
+    if (t.status === 'completed') e.completed++
+  }
+  completion.value = map
+}
+
+// A project is "completed" when it has at least one task and all are completed.
+function effectiveStatus(project: Project): ProjectStatus {
+  const c = completion.value[project.id]
+  if (c && c.total > 0 && c.completed === c.total) return 'completed'
+  return project.status
+}
+
 async function fetchData() {
-  await projectsStore.fetchProjects(selectedClient.value)
+  await Promise.all([
+    projectsStore.fetchProjects(selectedClient.value),
+    fetchCompletion()
+  ])
 }
 
 function handleProjectSaved() {
