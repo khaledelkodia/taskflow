@@ -46,6 +46,7 @@
         v-for="project in projectsStore.projects"
         :key="project.id"
         class="project-card group"
+        :class="{ 'project-card--completed': project.status === 'completed' }"
         @click="navigateTo(`/projects/${project.id}`)"
       >
         <!-- Decorative top-corner sheen -->
@@ -62,20 +63,20 @@
             </span>
           </div>
 
-          <p v-if="project.description" class="text-sm text-blue-100/80 line-clamp-3 mb-4">
+          <p v-if="project.description" class="project-card__desc text-sm line-clamp-3 mb-4">
             {{ project.description }}
           </p>
         </div>
 
         <div class="project-card__footer px-5 py-4 flex items-center justify-between">
           <div class="text-sm min-w-0">
-            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.client') }}</span>
+            <span class="project-card__label text-xs block mb-0.5">{{ $t('projects.client') }}</span>
             <span class="font-semibold text-white truncate max-w-[150px] inline-block">
               {{ project.client?.company_name }}
             </span>
           </div>
           <div class="text-sm text-end shrink-0">
-            <span class="text-blue-200/75 text-xs block mb-0.5">{{ $t('projects.created') }}</span>
+            <span class="project-card__label text-xs block mb-0.5">{{ $t('projects.created') }}</span>
             <span class="text-white/90 font-medium">
               {{ formatDate(project.created_at) }}
             </span>
@@ -174,6 +175,25 @@ onMounted(async () => {
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(2, 6, 23, 0.12);
 }
+
+/* Muted text tints (blue by default, green on completed cards) */
+.project-card__desc { color: rgba(219, 234, 254, 0.8); }
+.project-card__label { color: rgba(191, 219, 254, 0.75); }
+
+/* Completed → premium green gradient */
+.project-card--completed {
+  background: linear-gradient(150deg, #047857 0%, #059669 42%, #10B981 100%);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 14px 32px -12px rgba(16, 185, 129, 0.55);
+}
+.project-card--completed:hover {
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.08),
+    0 24px 46px -12px rgba(16, 185, 129, 0.68);
+}
+.project-card--completed .project-card__desc { color: rgba(209, 250, 229, 0.85); }
+.project-card--completed .project-card__label { color: rgba(167, 243, 208, 0.8); }
 
 .status-pill {
   flex-shrink: 0;
