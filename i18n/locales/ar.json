@@ -138,6 +138,7 @@
     "projectNamePlaceholder": "مثال: إعادة تصميم الموقع",
     "description": "الوصف",
     "descriptionPlaceholder": "وصف مبسط للمشروع...",
+    "noDescription": "لا يوجد وصف",
     "status": "الحالة",
     "deleteProject": "حذف المشروع",
     "confirmDelete": "هل أنت متأكد من حذف هذا المشروع؟ لا يمكن التراجع عن هذا الإجراء.",
@@ -149,6 +150,15 @@
     "statusOnHold": "قيد الانتظار",
     "statusCompleted": "مكتمل",
     "statusCancelled": "ملغى"
+  },
+  "projectUpdates": {
+    "title": "تحديثات المشروع",
+    "placeholder": "اكتب تحديثاً سريعاً بآخر المستجدات…",
+    "hint": "Ctrl + Enter للنشر",
+    "post": "نشر التحديث",
+    "empty": "لا توجد تحديثات بعد. شارك آخر المستجدات هنا.",
+    "deleteConfirm": "حذف هذا التحديث؟",
+    "postFailed": "فشل نشر التحديث"
   },
   "clients": {
     "title": "العملاء",

@@ -24,7 +24,7 @@
               {{ $t('priority.' + task.priority) }}
             </UiBadge>
             <UiBadge :color="TASK_TYPE_COLORS[task.type].replace('badge-', '') as any">
-              <span class="mr-1">{{ TASK_TYPE_ICONS[task.type] }}</span>
+              <TaskTypeIcon :type="task.type" class="w-3.5 h-3.5 me-1 inline-block align-[-2px]" />
               {{ TASK_TYPE_LABELS[task.type] }}
             </UiBadge>
           </div>
@@ -195,7 +195,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { Edit, Trash2, Check, X } from 'lucide-vue-next'
-import { PRIORITY_LABELS, PRIORITY_COLORS, TASK_TYPE_LABELS, TASK_TYPE_ICONS, TASK_TYPE_COLORS } from '~/utils/constants'
+import { PRIORITY_LABELS, PRIORITY_COLORS, TASK_TYPE_LABELS, TASK_TYPE_COLORS } from '~/utils/constants'
+import TaskTypeIcon from '~/components/tasks/TaskTypeIcon.vue'
 import { formatTaskNumber, formatDateTime, formatDate, formatHours, isOverdue } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'
 import { useI18n } from 'vue-i18n'

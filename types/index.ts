@@ -177,6 +177,15 @@ export interface TaskFilters {
   overdue?: boolean
 }
 
+export interface ProjectUpdate {
+  id: string
+  project_id: string
+  content: string
+  author_id: string | null
+  author_name: string
+  created_at: string
+}
+
 export type TaskSortField = 'created_at' | 'due_date' | 'priority' | 'title'
 export interface TaskSort {
   field: TaskSortField

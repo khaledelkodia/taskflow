@@ -150,6 +150,7 @@
     "projectNamePlaceholder": "e.g. Website Redesign",
     "description": "Description",
     "descriptionPlaceholder": "Brief description of the project...",
+    "noDescription": "No description",
     "status": "Status",
     "deleteProject": "Delete Project",
     "confirmDelete": "Are you sure you want to delete this project? This action cannot be undone.",
@@ -161,6 +162,15 @@
     "statusOnHold": "On Hold",
     "statusCompleted": "Completed",
     "statusCancelled": "Cancelled"
+  },
+  "projectUpdates": {
+    "title": "Project Updates",
+    "placeholder": "Write a quick update on what's new…",
+    "hint": "Ctrl + Enter to post",
+    "post": "Post update",
+    "empty": "No updates yet. Share the latest here.",
+    "deleteConfirm": "Delete this update?",
+    "postFailed": "Failed to post update"
   },
   "clients": {
     "title": "Clients",

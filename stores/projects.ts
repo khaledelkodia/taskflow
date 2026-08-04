@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { Project, CreateProjectPayload, Profile } from '~/types'
+import type { Project, CreateProjectPayload, Profile, ProjectUpdate } from '~/types'
 
 export const useProjectsStore = defineStore('projects', () => {
   const supabase = useSupabaseClient()
@@ -7,6 +7,7 @@ export const useProjectsStore = defineStore('projects', () => {
   const projects = ref<Project[]>([])
   const current = ref<Project | null>(null)
   const salesUsers = ref<Pick<Profile, 'id' | 'full_name'>[]>([])
+  const updates = ref<ProjectUpdate[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -89,6 +90,40 @@ export const useProjectsStore = defineStore('projects', () => {
     projects.value = projects.value.filter((p) => p.id !== id)
   }
 
+  // ─── Project quick updates ───────────────────────────────
+  async function fetchUpdates(projectId: string) {
+    const { data, error: err } = await supabase
+      .from('project_updates')
+      .select('*')
+      .eq('project_id', projectId)
+      .order('created_at', { ascending: false })
+    if (err) throw err
+    updates.value = (data ?? []) as ProjectUpdate[]
+  }
+
+  async function addUpdate(projectId: string, content: string) {
+    const authStore = useAuthStore()
+    const { data, error: err } = await supabase
+      .from('project_updates')
+      .insert({
+        project_id: projectId,
+        content,
+        author_id: authStore.user?.id,
+        author_name: authStore.profile?.full_name ?? 'Unknown'
+      })
+      .select('*')
+      .single()
+    if (err) throw err
+    updates.value.unshift(data as ProjectUpdate)
+    return data as ProjectUpdate
+  }
+
+  async function deleteUpdate(id: string) {
+    const { error: err } = await supabase.from('project_updates').delete().eq('id', id)
+    if (err) throw err
+    updates.value = updates.value.filter((u) => u.id !== id)
+  }
+
   const projectOptions = computed(() =>
     projects.value.map((p) => ({ label: p.name, value: p.id }))
   )
@@ -103,9 +138,10 @@ export const useProjectsStore = defineStore('projects', () => {
   })
 
   return {
-    projects, current, salesUsers, loading, error,
+    projects, current, salesUsers, updates, loading, error,
     projectOptions, projectsByClient,
     fetchProjects, fetchProject, createProject, updateProject, deleteProject,
-    fetchSalesUsers
+    fetchSalesUsers,
+    fetchUpdates, addUpdate, deleteUpdate
   }
 })

@@ -63,9 +63,6 @@
             </span>
           </div>
 
-          <p v-if="project.description" class="project-card__desc text-sm line-clamp-3 mb-4">
-            {{ project.description }}
-          </p>
         </div>
 
         <div class="project-card__footer px-5 py-4 flex items-center justify-between">
@@ -202,8 +199,6 @@ onMounted(async () => {
   background: rgba(2, 6, 23, 0.12);
 }
 
-/* Muted text tints (blue by default, green on completed cards) */
-.project-card__desc { color: rgba(219, 234, 254, 0.8); }
 .project-card__label { color: rgba(191, 219, 254, 0.75); }
 
 /* Completed → premium green gradient */
@@ -218,7 +213,6 @@ onMounted(async () => {
     0 1px 2px rgba(16, 24, 40, 0.08),
     0 24px 46px -12px rgba(16, 185, 129, 0.68);
 }
-.project-card--completed .project-card__desc { color: rgba(209, 250, 229, 0.85); }
 .project-card--completed .project-card__label { color: rgba(167, 243, 208, 0.8); }
 
 .status-pill {

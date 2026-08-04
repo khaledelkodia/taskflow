@@ -6,7 +6,7 @@
     <!-- Top row -->
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2 min-w-0">
-        <span class="text-lg shrink-0" :title="TASK_TYPE_LABELS[task.type]">{{ TASK_TYPE_ICONS[task.type] }}</span>
+        <TaskTypeIcon :type="task.type" :title="TASK_TYPE_LABELS[task.type]" class="w-4 h-4 text-content-muted shrink-0" />
         <span class="text-[11px] font-bold text-content-muted tracking-wider shrink-0">{{ formatTaskNumber(task.task_number) }}</span>
         <UiBadge :color="TASK_STATUS_COLORS[task.status].replace('badge-', '') as any" dot :dotColor="TASK_STATUS_DOT[task.status]">
           {{ $t('taskStatus.' + task.status) }}
@@ -52,9 +52,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Edit, Trash2 } from 'lucide-vue-next'
+import TaskTypeIcon from '~/components/tasks/TaskTypeIcon.vue'
 import {
   TASK_STATUS_COLORS, TASK_STATUS_DOT, PRIORITY_COLORS,
-  TASK_TYPE_LABELS, TASK_TYPE_ICONS
+  TASK_TYPE_LABELS
 } from '~/utils/constants'
 import { formatTaskNumber, formatDate } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'

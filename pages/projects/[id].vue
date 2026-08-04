@@ -60,6 +60,9 @@
       </div>
     </div>
 
+    <!-- Quick updates -->
+    <ProjectUpdates :project-id="projectId" />
+
     <!-- Filters -->
     <UiCard>
       <div class="p-4 flex flex-wrap gap-4 items-end border-b border-app-border">
@@ -127,7 +130,7 @@
               </td>
               <td>
                 <div class="flex items-center gap-2">
-                  <span class="text-lg" :title="TASK_TYPE_LABELS[task.type]">{{ TASK_TYPE_ICONS[task.type] }}</span>
+                  <TaskTypeIcon :type="task.type" :title="TASK_TYPE_LABELS[task.type]" class="w-4 h-4 text-content-muted shrink-0" />
                   <span class="font-medium text-content-primary truncate max-w-[200px] lg:max-w-xs">
                     {{ task.title }}
                   </span>
@@ -178,13 +181,15 @@ import {
   PROJECT_STATUS_LABELS, PROJECT_STATUS_COLORS,
   TASK_STATUS_OPTIONS, TASK_STATUS_LABELS, TASK_STATUS_COLORS, TASK_STATUS_DOT,
   PRIORITY_LABELS, PRIORITY_COLORS,
-  TASK_TYPE_LABELS, TASK_TYPE_ICONS
+  TASK_TYPE_LABELS
 } from '~/utils/constants'
 import { formatTaskNumber, formatDate } from '~/utils/formatters'
 import { hasPermission } from '~/utils/permissions'
 import { useI18n } from 'vue-i18n'
+import TaskTypeIcon from '~/components/tasks/TaskTypeIcon.vue'
 import TaskFormModal from '~/components/tasks/TaskFormModal.vue'
 import ProjectFormModal from '~/components/projects/ProjectFormModal.vue'
+import ProjectUpdates from '~/components/projects/ProjectUpdates.vue'
 import type { TaskFilters } from '~/types'
 
 definePageMeta({
