@@ -17,23 +17,18 @@
 
       <!-- Content -->
       <div class="min-w-0 flex-1 pb-5">
-        <p class="text-sm text-content-primary leading-snug">
+        <p class="text-sm text-content-primary leading-relaxed">
           <span class="font-semibold">{{ event.changed_by_name }}</span>
-          {{ $t('taskHistory.changed') }}
-          <span class="font-medium">{{ formatField(event.field_changed) }}</span>
+          {{ describe(event).verb }}
+          <span
+            v-if="describe(event).value"
+            class="inline-block px-2 py-0.5 mx-0.5 bg-primary-50 text-primary-700 rounded font-medium align-middle"
+          >
+            {{ describe(event).value }}
+          </span>
         </p>
 
-        <div class="mt-1.5 flex items-center flex-wrap gap-2 text-sm">
-          <span class="px-2 py-0.5 bg-gray-100 rounded text-gray-500 line-through">
-            {{ formatValue(event.field_changed, event.old_value) }}
-          </span>
-          <ArrowRight class="timeline-arrow w-4 h-4 text-gray-400 shrink-0" />
-          <span class="px-2 py-0.5 bg-primary-50 text-primary-700 rounded font-medium">
-            {{ formatValue(event.field_changed, event.new_value) }}
-          </span>
-        </div>
-
-        <p class="mt-2 flex items-center gap-1.5 text-xs text-content-muted">
+        <p class="mt-1.5 flex items-center gap-1.5 text-xs text-content-muted">
           <Clock class="w-3.5 h-3.5 shrink-0" />
           <span>{{ formatDateTime(event.changed_at) }}</span>
         </p>
@@ -44,8 +39,9 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { Clock, ArrowRight } from 'lucide-vue-next'
+import { Clock } from 'lucide-vue-next'
 import { formatDateTime } from '~/utils/formatters'
+import type { TaskHistory } from '~/types'
 
 const props = defineProps<{ taskId: string }>()
 const tasksStore = useTasksStore()
@@ -53,18 +49,42 @@ const { t } = useI18n()
 
 onMounted(() => tasksStore.fetchMemberNames())
 
-function formatField(field: string): string {
-  const known = ['status', 'priority', 'assigned_to', 'estimated_hours', 'actual_hours']
-  return known.includes(field) ? t(`taskHistory.fields.${field}`) : field
+function assigneeName(id: string | null | undefined): string {
+  if (!id) return t('taskHistory.none')
+  return tasksStore.memberNames[id] ?? t('taskHistory.newAssignee')
 }
 
-function formatValue(field: string, value: string | null | undefined): string {
-  if (!value) return t('taskHistory.none')
-  if (field === 'status') return t(`taskStatus.${value}`)
-  if (field === 'priority') return t(`priority.${value}`)
-  if (field === 'estimated_hours' || field === 'actual_hours') return `${value}h`
-  if (field === 'assigned_to') return tasksStore.memberNames[value] ?? t('taskHistory.newAssignee')
-  return value
+// Turn a raw history row into a readable "verb + value" sentence.
+function describe(event: TaskHistory): { verb: string; value?: string } {
+  const f = event.field_changed
+  const ov = event.old_value
+  const nv = event.new_value
+
+  switch (f) {
+    case 'status':
+      // First status (null → new) is really the task being created.
+      if (!ov && nv === 'new') return { verb: t('taskHistory.actions.created') }
+      return { verb: t('taskHistory.actions.statusTo'), value: nv ? t(`taskStatus.${nv}`) : t('taskHistory.none') }
+
+    case 'assigned_to':
+      if (!nv) return { verb: t('taskHistory.actions.unassigned') }
+      return {
+        verb: ov ? t('taskHistory.actions.reassignedTo') : t('taskHistory.actions.assignedTo'),
+        value: assigneeName(nv)
+      }
+
+    case 'priority':
+      return { verb: t('taskHistory.actions.priorityTo'), value: nv ? t(`priority.${nv}`) : t('taskHistory.none') }
+
+    case 'estimated_hours':
+      return { verb: t('taskHistory.actions.estimateTo'), value: nv ? `${nv}h` : t('taskHistory.none') }
+
+    case 'actual_hours':
+      return { verb: t('taskHistory.actions.hoursTo'), value: nv ? `${nv}h` : t('taskHistory.none') }
+
+    default:
+      return { verb: t('taskHistory.changed'), value: nv ?? undefined }
+  }
 }
 </script>
 
@@ -72,9 +92,5 @@ function formatValue(field: string, value: string | null | undefined): string {
 /* Hide the connector line under the last event */
 .timeline-item:last-child .timeline-line {
   display: none;
-}
-/* Arrow points old → new; flip it in RTL so it still reads correctly */
-[dir="rtl"] .timeline-arrow {
-  transform: scaleX(-1);
 }
 </style>

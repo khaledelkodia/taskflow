@@ -319,6 +319,16 @@
     "changed": "غيّر",
     "none": "لا شيء",
     "newAssignee": "مسؤول جديد",
+    "actions": {
+      "created": "أنشأ المهمة",
+      "statusTo": "غيّر الحالة إلى",
+      "assignedTo": "عيّن المهمة إلى",
+      "reassignedTo": "غيّر المسؤول إلى",
+      "unassigned": "أزال المسؤول",
+      "priorityTo": "غيّر الأولوية إلى",
+      "estimateTo": "حدّد الوقت المقدّر بـ",
+      "hoursTo": "سجّل"
+    },
     "fields": {
       "status": "الحالة",
       "priority": "الأولوية",

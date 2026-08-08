@@ -319,6 +319,16 @@
     "changed": "changed",
     "none": "None",
     "newAssignee": "New Assignee",
+    "actions": {
+      "created": "created this task",
+      "statusTo": "changed the status to",
+      "assignedTo": "assigned the task to",
+      "reassignedTo": "changed the assignee to",
+      "unassigned": "removed the assignee",
+      "priorityTo": "changed the priority to",
+      "estimateTo": "set the estimate to",
+      "hoursTo": "logged"
+    },
     "fields": {
       "status": "Status",
       "priority": "Priority",
