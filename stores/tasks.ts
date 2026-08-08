@@ -31,6 +31,18 @@ export const useTasksStore = defineStore('tasks', () => {
     members.value = (data ?? []) as Pick<Profile, 'id' | 'full_name' | 'role'>[]
   }
 
+  // id -> full_name for every profile (used to resolve names in history)
+  const memberNames = ref<Record<string, string>>({})
+  async function fetchMemberNames() {
+    if (Object.keys(memberNames.value).length) return
+    const { data } = await supabase.from('profiles').select('id, full_name')
+    const map: Record<string, string> = {}
+    for (const p of (data ?? []) as { id: string; full_name: string }[]) {
+      map[p.id] = p.full_name
+    }
+    memberNames.value = map
+  }
+
   // ─── Fetch Tasks ────────────────────────────────────────
   async function fetchTasks(filters: TaskFilters = {}, page = 0, perPage = 25, sort?: TaskSort) {
     loading.value = true
@@ -439,6 +451,7 @@ export const useTasksStore = defineStore('tasks', () => {
     fetchAttachments, uploadAttachment, deleteAttachment,
     fetchStats, fetchStatusBreakdown, fetchPriorityBreakdown,
     createNotification,
-    members, fetchMembers
+    members, fetchMembers,
+    memberNames, fetchMemberNames
   }
 })

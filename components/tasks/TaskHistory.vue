@@ -43,12 +43,15 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { Clock, ArrowRight } from 'lucide-vue-next'
 import { formatDateTime } from '~/utils/formatters'
 
 const props = defineProps<{ taskId: string }>()
 const tasksStore = useTasksStore()
 const { t } = useI18n()
+
+onMounted(() => tasksStore.fetchMemberNames())
 
 function formatField(field: string): string {
   const known = ['status', 'priority', 'assigned_to', 'estimated_hours', 'actual_hours']
@@ -60,7 +63,7 @@ function formatValue(field: string, value: string | null | undefined): string {
   if (field === 'status') return t(`taskStatus.${value}`)
   if (field === 'priority') return t(`priority.${value}`)
   if (field === 'estimated_hours' || field === 'actual_hours') return `${value}h`
-  if (field === 'assigned_to') return t('taskHistory.newAssignee')
+  if (field === 'assigned_to') return tasksStore.memberNames[value] ?? t('taskHistory.newAssignee')
   return value
 }
 </script>
