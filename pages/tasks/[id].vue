@@ -38,10 +38,10 @@
         </div>
 
         <div class="flex items-center gap-3 shrink-0">
-          <StatusDropdown 
-            :task-id="task.id" 
-            :current-status="task.status" 
-            @updated="task.status = $event"
+          <StatusDropdown
+            :task-id="task.id"
+            :current-status="task.status"
+            @updated="onStatusUpdated"
           />
           <UiButton
             v-if="hasPermission(authStore.role, 'create_tasks')"
@@ -257,7 +257,16 @@ async function saveHours() {
 }
 
 async function handleTaskSaved() {
-  await tasksStore.fetchTask(taskId)
+  await Promise.all([
+    tasksStore.fetchTask(taskId),
+    tasksStore.fetchHistory(taskId)
+  ])
+}
+
+// After a status change: refresh the task and its timeline so the new
+// status change appears immediately with its date and time.
+async function onStatusUpdated() {
+  await tasksStore.fetchHistory(taskId)
 }
 
 async function handleDelete() {

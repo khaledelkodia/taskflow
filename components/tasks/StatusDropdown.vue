@@ -76,13 +76,23 @@ const allowedTransitions = computed(() => {
 })
 
 async function updateStatus(newStatus: TaskStatus) {
-  if (updating.value) return
+  if (updating.value || newStatus === props.currentStatus) return
   updating.value = true
   try {
+    const oldStatus = props.currentStatus
     await tasksStore.updateTask(props.taskId, { status: newStatus })
-    
+
+    // Record the change in the task timeline (who, from → to, when)
+    await tasksStore.addHistory(
+      props.taskId,
+      'status',
+      oldStatus,
+      newStatus,
+      authStore.profile?.full_name ?? 'Unknown'
+    )
+
     // Notification logic
-    let msg = `Task status updated to ${TASK_STATUS_LABELS[newStatus]}`
+    const msg = `Task status updated to ${TASK_STATUS_LABELS[newStatus]}`
     await tasksStore.createNotification(props.taskId, 'status_changed', msg)
 
     emit('updated', newStatus)
